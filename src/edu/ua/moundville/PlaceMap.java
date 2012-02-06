@@ -33,9 +33,9 @@ public class PlaceMap extends MapActivity {
         mapView.setBuiltInZoomControls(true);
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
-        center = new GeoPoint(33221430, -87528613);
+        center = new GeoPoint(33005263, -87631438);
         mapController.animateTo(center);
-        mapController.setZoom(15);
+        mapController.setZoom(17);
         
         /* adding overlays */
         overlays = mapView.getOverlays();
