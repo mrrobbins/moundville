@@ -14,11 +14,11 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 public class PlaceMap extends MapActivity {
-	LinearLayout linearLayout;
-	MapView mapView;
-	MapController mapController;
-    GeoPoint center;
-    ItemOverlay primaryOverlay;
+	private LinearLayout linearLayout;
+	private MapView mapView;
+	private MapController mapController;
+    private ItemOverlay primaryOverlay;
+    private final GeoPoint center = new GeoPoint(33005263, -87631438);
     List<Overlay> overlays;
     Drawable mapMarker;
 	
@@ -31,9 +31,9 @@ public class PlaceMap extends MapActivity {
         mapView = (MapView) findViewById(R.id.mapview);
         /* 	Then get the ZoomControls from the MapView */
         mapView.setBuiltInZoomControls(true);
+        mapView.setSatellite(true);
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
-        center = new GeoPoint(33005263, -87631438);
         mapController.animateTo(center);
         mapController.setZoom(17);
         
