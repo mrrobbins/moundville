@@ -6,7 +6,7 @@
 <title>[TITLE] : Crimson Racing | Formula SAE</title>
 <!-- #EndEditable -->
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<link href="default.css" rel="stylesheet" type="text/css" />
+<link href="/moundville/default.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -34,9 +34,9 @@
 							<table cellpadding="0" cellspacing="0" class="linkbar">
 								<tr>
 									<td><a href="/moundville/">Home</a></td>
-									<td><a href="#">Project</a></td>
-									<td><a href="#">Download</a></td>
-									<td><a href="#">Team</a></td>
+									<td><a href="/moundville/project/">Project</a></td>
+									<td><a href="/moundville/download/">Download</a></td>
+									<td><a href="/moundville/team/">Team</a></td>
 								</tr>
 							</table>
 							</td>
@@ -60,36 +60,7 @@
 							</tr>
 						</table>
 					</div>
-					<!-- #BeginEditable "header" --><%
-					''''''''''''''''''''''''''''''''''''''''
-					' pick random image
-					''''''''''''''''''''''''''''''''''''''''
-					
-					Function RandomNumber(intHighestNumber)
-						Randomize
-						RandomNumber = Int(Rnd * intHighestNumber)
-					End Function
-		
-					Filename = "/moundville/images/header/header_data.txt"
-					set fso = server.createObject("Scripting.FileSystemObject")
-					Filepath = Server.MapPath(Filename)
-					if fso.FileExists(Filepath) Then
-						Set ts = fso.OpenTextFile(Filepath, 1)
-						
-						numHeaders = ts.ReadLine
-						numHeaders = CInt(numHeaders)
-						
-						displayHeader = RandomNumber(numHeaders)
-						
-						For i=1 to displayHeader
-							ts.ReadLine
-						Next
-						
-						headerImgPath = ts.ReadLine
-						
-						ts.Close()
-					End If
-				%> <img src="<%=headerImgPath%>" alt="" width="480" height="165" /><!-- #EndEditable --></div>
+					<!-- #BeginEditable "header" --><img src="<%=headerImgPath%>" alt="" width="480" height="165" /><!-- #EndEditable --></div>
 				</td>
 			</tr>
 		</table>
@@ -166,43 +137,6 @@
 				<br />
 				<br />
 				<hr /><br />
-				<%
-					''''''''''''''''''''''''''''''''''''''''
-					' pick random sponsor
-					''''''''''''''''''''''''''''''''''''''''
-					
-					Function RandomNumber(intHighestNumber)
-						Randomize
-						RandomNumber = Int(Rnd * intHighestNumber)
-					End Function
-		
-					Filename = "/moundville/images/sponsors/sidebar/sponsor_data.txt"
-					Const ForReading = 1
-					set fso = server.createObject("Scripting.FileSystemObject")
-					Filepath = Server.MapPath(Filename)
-					if fso.FileExists(Filepath) Then
-						Set ts = fso.OpenTextFile(Filepath, ForReading)
-						
-						numSponsors = ts.ReadLine
-						numSponsors = CInt(numSponsors)
-						
-						displaySponsor = RandomNumber(numSponsors)
-						
-						For i=1 to displaySponsor
-							ts.ReadLine
-							ts.ReadLine
-							ts.ReadLine
-						Next
-						
-						sponsorImgPath = ts.ReadLine
-						sponsorToolTip = ts.ReadLine
-						sponsorLinkPath = ts.ReadLine
-						
-						ts.Close()
-					End If
-				%> <span style="font-size: xx-small">Sponsor:</span>
-				<a href="<%=sponsorLinkPath%>" target="_blank">
-				<img src="<%=sponsorImgPath%>" alt="<%=sponsorToolTip%>" width="135" height="75" style="border: 1px #9ECE00 solid" /></a>
 				</td>
 			</tr>
 		</table>

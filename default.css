@@ -45,7 +45,7 @@ a:visited:hover {
 	height:35px;
 	text-align:center;
 	cursor:pointer;
-	background-image:url(/images/button.gif);
+	background-image:url(/moundville/images/button.gif);
 }
 .linkbar td a {
 	font-weight:bold;
@@ -65,7 +65,7 @@ a:visited:hover {
 }
 .linkbar td:hover {
 	background-color:#9ECE00;
-	background-image:url(/images/button_hover.gif);
+	background-image:url(/moundville/images/button_hover.gif);
 }
 .linkbar td:hover a {
 	font-weight:bold;
@@ -180,70 +180,70 @@ a:visited:hover {
 	color: white;
 }
 .shadow-top-left {
-	background-image: url(/images/top_left_corner.gif);
+	background-image: url(/moundville/images/top_left_corner.gif);
 	background-repeat: no-repeat;
 	background-position: right;
 	width:10px;
 	height:10px;
 }
 .shadow-top {
-	background-image: url(/images/shadow_top.gif);
+	background-image: url(/moundville/images/shadow_top.gif);
 	background-repeat: repeat-x;
 	height:10px;
 }
 .shadow-top-right {
-	background-image: url(/images/top_right_corner.gif);
+	background-image: url(/moundville/images/top_right_corner.gif);
 	background-repeat: no-repeat;
 	background-position: left;
 	width:10px;
 	height:10px;
 }
 .shadow-left {
-	background-image: url(/images/shadow_left.gif);
+	background-image: url(/moundville/images/shadow_left.gif);
 	background-repeat: repeat-y;
 	background-position: right;
 	width:10px;
 }
 .shadow-right {
-	background-image: url(/images/shadow_right.gif);
+	background-image: url(/moundville/images/shadow_right.gif);
 	background-repeat: repeat-y;
 	background-position: left;
 	width:10px;
 }
 .shadow-bottom-left {
-	background-image: url(/images/bottom_left_corner.gif);
+	background-image: url(/moundville/images/bottom_left_corner.gif);
 	background-repeat: no-repeat;
 	background-position: right;
 	width:10px;
 	height:10px;
 }
 .shadow-bottom {
-	background-image: url(/images/shadow_bottom.gif);
+	background-image: url(/moundville/images/shadow_bottom.gif);
 	background-repeat: repeat-x;
 	height:10px;
 }
 .shadow-bottom-right {
-	background-image: url(/images/bottom_right_corner.gif);
+	background-image: url(/moundville/images/bottom_right_corner.gif);
 	background-repeat: no-repeat;
 	background-position: left;
 	width:10px;
 	height:10px;
 }
 .image-shadow-right {
-	background-image: url(/images/image_shadow_right.gif);
+	background-image: url(/moundville/images/image_shadow_right.gif);
 	background-repeat: repeat-y;
 	background-position: left;
 	width:10px;
 	vertical-align:top;
 }
 .image-shadow-bottom {
-	background-image: url(/images/image_shadow_bottom.gif);
+	background-image: url(/moundville/images/image_shadow_bottom.gif);
 	background-repeat: repeat-x;
 	height:10px;
 	text-align:left;
 }
 .image-shadow-bottom-right {
-	background-image: url(/images/image_bottom_right_corner.gif);
+	background-image: url(/moundville/images/image_bottom_right_corner.gif);
 	background-repeat: no-repeat;
 	background-position: left;
 	width:10px;
@@ -271,7 +271,7 @@ img.image {
 }
 .imagecontainer{
 	float:left;
-	background: url(/images/image_shadow.gif) no-repeat bottom right;
+	background: url(/moundville/images/image_shadow.gif) no-repeat bottom right;
 }
 .imagecontainer img{
 	display: block;
