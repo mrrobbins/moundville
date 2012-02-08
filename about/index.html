@@ -21,13 +21,13 @@
 	</tr>
 	<tr>
 		<td class="shadow-left" rowspan="2">
-		<img src="/images/spacer.gif" width="10" alt="" /></td>
+		<img src="/moundville/images/spacer.gif" width="10" alt="" /></td>
 		<td>
 		<!--Header-->
 		<table cellpadding="0" cellspacing="0" class="header">
 			<tr>
 				<td style="vertical-align: top;"><a href="/">
-				<img src="/images/header.png" alt="Crimson Racing" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
+				<img src="/moundville/images/header.png" alt="Crimson Racing" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
 				<!--Navigation-->
 				<div class="linkbardiv">
 					<table style="margin-left: 0px" cellpadding="0" cellspacing="0">
@@ -43,20 +43,20 @@
 							</table>
 							</td>
 							<td>
-							<img src="/images/linkbar_diag.gif" alt="" width="35" height="35" /></td>
+							<img src="/moundville/images/linkbar_diag.gif" alt="" width="35" height="35" /></td>
 						</tr>
 					</table>
 				</div>
 				<!--End Navigation--></td>
 				<td class="headerCenter">
-				<img src="/images/vertical_divide.gif" alt="" /></td>
+				<img src="/moundville/images/vertical_divide.gif" alt="" /></td>
 				<td class="headerRight">
 				<div style="border-bottom: 1px #9ECE00 solid">
 					<div>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
 								<td style="width: 16px">
-								<img src="/images/aboutbar_diagonal.gif" alt="" /></td>
+								<img src="/moundville/images/aboutbar_diagonal.gif" alt="" /></td>
 								<td class="aboutBar"><a href="./">About 
 								Formula SAE</a> | <a href="#">Contact</a></td>
 							</tr>
@@ -72,7 +72,7 @@
 						RandomNumber = Int(Rnd * intHighestNumber)
 					End Function
 		
-					Filename = "/images/header/header_data.txt"
+					Filename = "/moundville/images/header/header_data.txt"
 					set fso = server.createObject("Scripting.FileSystemObject")
 					Filepath = Server.MapPath(Filename)
 					if fso.FileExists(Filepath) Then
@@ -97,7 +97,7 @@
 		</table>
 		</td>
 		<td class="shadow-right" rowspan="2">
-		<img alt="" src="/images/spacer.gif" width="10" /></td>
+		<img alt="" src="/moundville/images/spacer.gif" width="10" /></td>
 	</tr>
 	<tr>
 		<td>
@@ -108,8 +108,8 @@
 				<table class="breadcrumb" cellpadding="0" cellspacing="0">
 					<tr>
 						<td style="width: 23px">
-						<img alt="" src="/images/top_right_diag.gif" /></td>
-						<td style="background-image: url(/images/breadcrumb.gif)">
+						<img alt="" src="/moundville/images/top_right_diag.gif" /></td>
+						<td style="background-image: url('/moundville/images/breadcrumb.gif')">
 						<span style="margin-left: 20px; font-size: x-small; font-weight: bold">
 						<a href="" style="color: red">Crimson Racing</a>&nbsp;&nbsp; 
 						»&nbsp;&nbsp;
@@ -181,7 +181,7 @@
 						RandomNumber = Int(Rnd * intHighestNumber)
 					End Function
 		
-					Filename = "/images/sponsors/sidebar/sponsor_data.txt"
+					Filename = "/moundville/images/sponsors/sidebar/sponsor_data.txt"
 					Const ForReading = 1
 					set fso = server.createObject("Scripting.FileSystemObject")
 					Filepath = Server.MapPath(Filename)

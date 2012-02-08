@@ -1,46 +1,46 @@
 15
-/images/sponsors/sidebar/acipco.jpg
+/moundville/images/sponsors/sidebar/acipco.jpg
 American Cast Iron Pipe Company
 http://www.acipco.com/
-/images/sponsors/sidebar/alabama_power.jpg
+/moundville/images/sponsors/sidebar/alabama_power.jpg
 Alabama Power
 http://www.alabamapower.com/
-/images/sponsors/sidebar/apr_tuned.jpg
+/moundville/images/sponsors/sidebar/apr_tuned.jpg
 APR Tuned
 http://www.goapr.com/
-/images/sponsors/sidebar/aureus_international.jpg
+/moundville/images/sponsors/sidebar/aureus_international.jpg
 Aureus International
 http://www.aureusinternational.com/
-/images/sponsors/sidebar/big_blue_saw.jpg
+/moundville/images/sponsors/sidebar/big_blue_saw.jpg
 Big Blue Saw
 http://www.bigbluesaw.com/
-/images/sponsors/sidebar/craneworks.jpg
+/moundville/images/sponsors/sidebar/craneworks.jpg
 CraneWorks
 http://www.craneworks.com/
-/images/sponsors/sidebar/honda.jpg
+/moundville/images/sponsors/sidebar/honda.jpg
 Honda
 http://www.honda.com/
-/images/sponsors/sidebar/isci.jpg
+/moundville/images/sponsors/sidebar/isci.jpg
 Industrial Specialty Company, Inc.
 http://www.industrialspecialty.com/
-/images/sponsors/sidebar/red_bull.jpg
+/moundville/images/sponsors/sidebar/red_bull.jpg
 Red Bull
 http://www.redbull.com/
-/images/sponsors/sidebar/solidworks.jpg
+/moundville/images/sponsors/sidebar/solidworks.jpg
 SolidWorks
 http://www.solidworks.com/
-/images/sponsors/sidebar/stam.jpg
+/moundville/images/sponsors/sidebar/stam.jpg
 Stam, Inc.
 http://www.tube-bending-service.com/
-/images/sponsors/sidebar/star_aviation.jpg
+/moundville/images/sponsors/sidebar/star_aviation.jpg
 Star Aviation
 http://www.staraviation.com/
-/images/sponsors/sidebar/timken.jpg
+/moundville/images/sponsors/sidebar/timken.jpg
 Timken
 http://www.timken.com/
-/images/sponsors/sidebar/team_venture_racing.jpg
+/moundville/images/sponsors/sidebar/team_venture_racing.jpg
 Team Venture Racing
 http://www.teamventureracing.com
-/images/sponsors/sidebar/willie's_cycles.jpg
+/moundville/images/sponsors/sidebar/willie's_cycles.jpg
 Willie's Cycles
 http://www.williescycle.com/
