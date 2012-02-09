@@ -3,7 +3,7 @@
 
 <head>
 <!-- #BeginEditable "doctitle" -->
-<title>[TITLE] : Crimson Racing | Formula SAE</title>
+<title>[TITLE] : Mountain High Apps | The Apex of Mobile Development</title>
 <!-- #EndEditable -->
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="/moundville/default.css" rel="stylesheet" type="text/css" />
@@ -25,7 +25,7 @@
 		<table cellpadding="0" cellspacing="0" class="header">
 			<tr>
 				<td style="vertical-align: top;"><a href="/moundville/">
-				<img src="/moundville/images/header.png" alt="Crimson Racing" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
+				<img src="/moundville/images/header2.png" alt="Mountain High Apps" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
 				<!--Navigation-->
 				<div class="linkbardiv">
 					<table style="margin-left: 0px" cellpadding="0" cellspacing="0">
@@ -46,21 +46,10 @@
 					</table>
 				</div>
 				<!--End Navigation--></td>
-				<td class="headerCenter">
-				<img src="/moundville/images/vertical_divide.gif" alt="" /></td>
+				<td class="headerCenter"></td>
 				<td class="headerRight">
 				<div style="border-bottom: 1px #9ECE00 solid">
-					<div>
-						<table cellpadding="0" cellspacing="0">
-							<tr>
-								<td style="width: 16px">
-								<img src="/moundville/images/aboutbar_diagonal.gif" alt="" /></td>
-								<td class="aboutBar"><a href="about/">About 
-								Formula SAE</a> | <a href="#">Contact</a></td>
-							</tr>
-						</table>
-					</div>
-					<!-- #BeginEditable "header" --><img src="<%=headerImgPath%>" alt="" width="480" height="165" /><!-- #EndEditable --></div>
+					<!-- #BeginEditable "header" --><img src="" alt="" width="480" height="165" /><!-- #EndEditable --></div>
 				</td>
 			</tr>
 		</table>
@@ -80,7 +69,7 @@
 						<img alt="" src="/moundville/images/top_right_diag.gif" /></td>
 						<td style="background-image: url('/moundville/images/breadcrumb.gif')">
 						<span style="margin-left: 20px; font-size: x-small; font-weight: bold">
-						<a href="" style="color: red">Crimson Racing</a>&nbsp;&nbsp; 
+						<a href="" style="color: red">Mountain High Apps</a>&nbsp;&nbsp; 
 						»&nbsp;&nbsp;
 						<!-- #BeginEditable "breadcrumb" -->[CURRENT LOCATION]<!-- #EndEditable --></span></td>
 					</tr>
@@ -117,7 +106,7 @@
 				</table>
 				</td>
 				<!--Sidebar-->
-				<td class="sidebar"><b>&#39;09 FSAE Car Status:</b><br />
+				<td class="sidebar"><!--<b>&#39;09 FSAE Car Status:</b><br />
 				<b style="color: yellow; font-size: x-small">Stage 1 - Design</b><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="#" style="font-size: x-small">view details »</a> <br />
@@ -136,7 +125,7 @@
 				<a href="#" style="font-size: x-small">view all events »</a>
 				<br />
 				<br />
-				<hr /><br />
+				<hr /><br />-->
 				</td>
 			</tr>
 		</table>
@@ -159,9 +148,8 @@
 				<img alt="Valid CSS 2.1" src="images/css-button.gif" style="border: 0px" />
 				</td>
 				<td style="width: 550px; text-align: center"><a href="">Home</a> 
-				| <a href="#">News</a> | <a href="#">Media</a> | <a href="#">Team</a> 
-				| <a href="#">Cars</a> | <a href="/sponsors/">Sponsors</a></td>
-				<td style="width: 200px; text-align: right">© 2008 Crimson Racing<br />
+				| <a href="#">Project</a> | <a href="#">Download</a> | <a href="#">Team</a></td>
+				<td style="width: 200px; text-align: right">© 2012 Mountain High Apps<br />
 				<span style="font-size: xx-small">Site Design by Brian Connell</span></td>
 			</tr>
 		</table>
