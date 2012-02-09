@@ -25,7 +25,7 @@
 		<table cellpadding="0" cellspacing="0" class="header">
 			<tr>
 				<td style="vertical-align: top;"><a href="/moundville/">
-				<img src="/moundville/images/header2.png" alt="Mountain High Apps" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
+				<img src="/moundville/images/team-logo.png" alt="Mountain High Apps" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
 				<!--Navigation-->
 				<div class="linkbardiv">
 					<table style="margin-left: 0px" cellpadding="0" cellspacing="0">
@@ -69,7 +69,7 @@
 						<img alt="" src="/moundville/images/top_right_diag.gif" /></td>
 						<td style="background-image: url('/moundville/images/breadcrumb.gif')">
 						<span style="margin-left: 20px; font-size: x-small; font-weight: bold">
-						<a href="" style="color: red">Mountain High Apps</a>&nbsp;&nbsp; 
+						<a href="" style="color: grey">Mountain High Apps</a>&nbsp;&nbsp; 
 						»&nbsp;&nbsp;
 						<!-- #BeginEditable "breadcrumb" -->[CURRENT LOCATION]<!-- #EndEditable --></span></td>
 					</tr>
