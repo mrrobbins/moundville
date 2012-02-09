@@ -14,11 +14,10 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
 public class PlaceMap extends MapActivity {
-	private LinearLayout linearLayout;
+    private final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
 	private MapView mapView;
 	private MapController mapController;
     private ItemOverlay primaryOverlay;
-    private final GeoPoint center = new GeoPoint(33005263, -87631438);
     List<Overlay> overlays;
     Drawable mapMarker;
 	
@@ -34,14 +33,14 @@ public class PlaceMap extends MapActivity {
         mapView.setSatellite(true);
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
-        mapController.animateTo(center);
+        mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
         mapController.setZoom(17);
         
         /* adding overlays */
         overlays = mapView.getOverlays();
         mapMarker = this.getResources().getDrawable(R.drawable.map_marker_green);
         primaryOverlay = new ItemOverlay(mapMarker);
-        OverlayItem i = new OverlayItem(center, "", "");
+        OverlayItem i = new OverlayItem(MOUNDVILLE_LOCATION_CENTER, "", "");
         primaryOverlay.addItem(i);
         
         overlays.add(primaryOverlay);
