@@ -70,6 +70,10 @@ a:visited:hover {
 	background-color:#9ECE00;
 	background-image:url(/moundville/images/button_hover.gif);
 }
+.linkbar td:visited {
+	background-color:#9ECE00;
+	background-image:url(/moundville/images/button_hover.gif);
+}
 .linkbar td:hover a {
 	font-weight:bold;
 	text-decoration:none;
