@@ -13,4 +13,30 @@
         android:apiKey="0ZaJSAg-jzrwBXMZX7Dp5-kjqffYVoV7xw4R8uA"
     />
 
+    <Button
+        android:id="@+id/btn_myLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+   		style="@android:style/TextAppearance.Medium"
+        android:text="@string/btn_myLocation" />
+
+    <ToggleButton
+        android:id="@+id/btn_layer_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
+        android:alpha=".8"
+        android:text="@string/btn_layer_toggle"
+   		style="@android:style/TextAppearance.Medium"
+        android:textOff="Satellite"
+        android:textOn="Satellite" />
+
 </RelativeLayout>

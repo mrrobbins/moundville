@@ -3,5 +3,7 @@
 
     <string name="app_name">Moundville</string>
     <string name="launch_map">Map</string>
+    <string name="btn_myLocation">My Loc</string>
+    <string name="btn_layer_toggle">Satellite</string>
 
 </resources>
