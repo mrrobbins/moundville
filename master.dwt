@@ -7,6 +7,7 @@
 <!-- #EndEditable -->
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="/moundville/default.css" rel="stylesheet" type="text/css" />
+<link href="/default.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -25,7 +26,7 @@
 		<table cellpadding="0" cellspacing="0" class="header">
 			<tr>
 				<td style="vertical-align: top;"><a href="/moundville/">
-				<img src="images/header2.png" alt="Mountain High Apps" style="width: 455px; height: 130px; border: 0px;padding-bottom:1px" /></a><br />
+				<img src="/moundville/images/header.png" alt="Mountain High Apps" style="border: 0px;padding-bottom:1px;padding-left:5px" /></a><br />
 				<!--Navigation-->
 				<div class="linkbardiv">
 					<table style="margin-left: 0px" cellpadding="0" cellspacing="0">
@@ -46,11 +47,7 @@
 					</table>
 				</div>
 				<!--End Navigation--></td>
-				<td class="headerCenter"></td>
-				<td class="headerRight">
-				<div style="border-bottom: 1px #9ECE00 solid">
-					<!-- #BeginEditable "header" --><img src="" alt="" width="480" height="165" /><!-- #EndEditable --></div>
-				</td>
+				<td class="headerRight"><!-- #BeginEditable "header" --><img src="/moundville/images/unavailable.gif" alt="" width="490" height="166" /><!-- #EndEditable --></td>
 			</tr>
 		</table>
 		</td>
@@ -67,9 +64,9 @@
 					<tr>
 						<td style="width: 23px">
 						<img alt="" src="/moundville/images/top_right_diag.gif" /></td>
-						<td style="background-image: url('/moundville/images/breadcrumb.gif')">
+						<td style="background-image: url('/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../moundville/images/breadcrumb.gif')">
 						<span style="margin-left: 20px; font-size: x-small; font-weight: bold">
-						<a href="" style="color: grey">Mountain High Apps</a>&nbsp;&nbsp; 
+						<a href="/moundville/" style="color: gray">Mountain High Apps</a>&nbsp;&nbsp; 
 						»&nbsp;&nbsp;
 						<!-- #BeginEditable "breadcrumb" -->[CURRENT LOCATION]<!-- #EndEditable --></span></td>
 					</tr>
@@ -83,7 +80,7 @@
 							<table cellpadding="0" cellspacing="0">
 								<tr>
 									<td>
-									<img class="image" alt="[SAMPLE IMAGE]" src="images/unavailable.gif" /></td>
+									<img class="image" alt="[SAMPLE IMAGE]" src="/moundville/images/unavailable.gif" /></td>
 									<td class="image-shadow-right">
 									<img src="/moundville/images/image_top_right_corner.gif" alt="" /></td>
 								</tr>
@@ -103,28 +100,6 @@
 						<!-- #EndEditable --></td>
 					</tr>
 				</table>
-				</td>
-				<!--Sidebar-->
-				<td class="sidebar"><!--<b>&#39;09 FSAE Car Status:</b><br />
-				<b style="color: yellow; font-size: x-small">Stage 1 - Design</b><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" style="font-size: x-small">view details »</a> <br />
-				<br />
-				<hr /><br />
-				<b>Upcoming Events</b><br />
-				<ul class="eventlist">
-					<li><a href="#">Sample Event 1</a><br />
-					<span>September 9, 2008</span></li>
-					<li><a href="#">Sample Event 2</a><br />
-					<span>September 30, 2008</span></li>
-					<li><a href="#">Sample Event 3</a><br />
-					<span>November 11, 2008</span></li>
-				</ul>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="#" style="font-size: x-small">view all events »</a>
-				<br />
-				<br />
-				<hr /><br />-->
 				</td>
 			</tr>
 		</table>
@@ -148,8 +123,7 @@
 				</td>
 				<td style="width: 550px; text-align: center"><a href="">Home</a> 
 				| <a href="#">Project</a> | <a href="#">Download</a> | <a href="#">Team</a></td>
-				<td style="width: 200px; text-align: right">© 2012 Mountain High Apps<br />
-				<span style="font-size: xx-small">Site Design by Brian Connell</span></td>
+				<td style="width: 200px; text-align: right">© 2012 Mountain High Apps</td>
 			</tr>
 		</table>
 		</td>
