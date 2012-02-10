@@ -1,33 +1,33 @@
 ﻿html {
-	background-color:white;
+	background-color: white;
 }
 body {
-	font-family:"Century Gothic";
-	font-size:small;
+	font-family: "Century Gothic";
+	font-size: small;
 	margin: 0px auto 0px auto;
 }
 body table {
-	margin:0px auto 0px auto;
+	margin: 0px auto 0px auto;
 }
 h1 {
-	margin-top:0px;
+	margin-top: 0px;
 }
 a:link {
-	text-decoration:none;
+	text-decoration: none;
 }
 a:hover {
-	color:#870022;
-	text-decoration:underline;
+	color: #870022;
+	text-decoration: underline;
 }
 a:visited {
-	text-decoration:none;
+	text-decoration: none;
 }
 a:visited:hover {
-	text-decoration:underline;
+	text-decoration: underline;
 }
 .mastertable {
-	margin:0px auto 0px auto;
-	width:970px;
+	margin: 0px auto 0px auto;
+	width: 970px;
 	background-color: white;
 }
 .linkbardiv {
@@ -38,63 +38,62 @@ a:visited:hover {
 	margin-right: auto;
 }
 .linkbar {
-	margin-left:0px;
-	background-color:yellow;
+	margin-left: 0px;
+	background-color: yellow;
 }
 .linkbar td {
-	width:125px;
-	height:35px;
-	text-align:center;
-	cursor:pointer;
-	background-image:url('/moundville/images/button.gif');
+	width: 125px;
+	height: 35px;
+	text-align: center;
+	cursor: pointer;
+	background-image: url('/moundville/images/button.gif');
 }
 .linkbar td a {
-	font-weight:bold;
-	font-size:large;
-	font-variant:small-caps;
-	color:black;
-	text-decoration:none;
-	display:block;
+	font-weight: bold;
+	font-size: large;
+	font-variant: small-caps;
+	color: black;
+	text-decoration: none;
+	display: block;
 }
 .linkbar td a:hover {
-	font-weight:bold;
-	font-size:large;
-	font-variant:small-caps;
-	color:black;
-	text-decoration:none;
-	display:block;
+	font-weight: bold;
+	font-size: large;
+	font-variant: small-caps;
+	color: black;
+	text-decoration: none;
+	display: block;
 }
 .linkbar td:hover {
-	background-color:#9ECE00;
-	background-image:url('/moundville/images/button_hover.gif');
+	background-color: #9ECE00;
+	background-image: url('/moundville/images/button_hover.gif');
 }
-
 .linkbar td:hover a {
-	font-weight:bold;
-	text-decoration:none;
+	font-weight: bold;
+	text-decoration: none;
 }
 .linkbar-diag {
-	width:35px;
-	cursor:auto;
+	width: 35px;
+	cursor: auto;
 }
 .breadcrumb {
-	height:23px;
-	background-color:white;
-	vertical-align:middle;
-	width:100%;
+	height: 23px;
+	background-color: white;
+	vertical-align: middle;
+	width: 100%;
 }
 .eventlist {
-	padding-left:15px;
-	margin-left:0px;
+	padding-left: 15px;
+	margin-left: 0px;
 }
 .eventlist li {
-	margin-bottom:15px;
+	margin-bottom: 15px;
 }
 .eventlist li a {
-	color:white;
+	color: white;
 }
 .eventlist li a:hover {
-	color:white;
+	color: white;
 }
 .eventlist span {
 	color: gray;
@@ -122,7 +121,7 @@ a:visited:hover {
 }
 .headerRight {
 	width: 485px;
-	text-align:right;
+	text-align: right;
 }
 .aboutBar {
 	background-color: black;
@@ -158,99 +157,99 @@ a:visited:hover {
 	background-image: url('/moundville/images/top_left_corner.gif');
 	background-repeat: no-repeat;
 	background-position: right;
-	width:10px;
-	height:10px;
+	width: 10px;
+	height: 10px;
 }
 .shadow-top {
 	background-image: url('/moundville/images/shadow_top.gif');
 	background-repeat: repeat-x;
-	height:10px;
+	height: 10px;
 }
 .shadow-top-right {
 	background-image: url('/moundville/images/top_right_corner.gif');
 	background-repeat: no-repeat;
 	background-position: left;
-	width:10px;
-	height:10px;
+	width: 10px;
+	height: 10px;
 }
 .shadow-left {
 	background-image: url('/moundville/images/shadow_left.gif');
 	background-repeat: repeat-y;
 	background-position: right;
-	width:10px;
+	width: 10px;
 }
 .shadow-right {
 	background-image: url('/moundville/images/shadow_right.gif');
 	background-repeat: repeat-y;
 	background-position: left;
-	width:10px;
+	width: 10px;
 }
 .shadow-bottom-left {
 	background-image: url('/moundville/images/bottom_left_corner.gif');
 	background-repeat: no-repeat;
 	background-position: right;
-	width:10px;
-	height:10px;
+	width: 10px;
+	height: 10px;
 }
 .shadow-bottom {
 	background-image: url('/moundville/images/shadow_bottom.gif');
 	background-repeat: repeat-x;
-	height:10px;
+	height: 10px;
 }
 .shadow-bottom-right {
 	background-image: url('/moundville/images/bottom_right_corner.gif');
 	background-repeat: no-repeat;
 	background-position: left;
-	width:10px;
-	height:10px;
+	width: 10px;
+	height: 10px;
 }
 .image-shadow-right {
 	background-image: url('/moundville/images/image_shadow_right.gif');
 	background-repeat: repeat-y;
 	background-position: left;
-	width:10px;
-	vertical-align:top;
+	width: 10px;
+	vertical-align: top;
 }
 .image-shadow-bottom {
 	background-image: url('/moundville/images/image_shadow_bottom.gif');
 	background-repeat: repeat-x;
-	height:10px;
-	text-align:left;
+	height: 10px;
+	text-align: left;
 }
 .image-shadow-bottom-right {
 	background-image: url('/moundville/images/image_bottom_right_corner.gif');
 	background-repeat: no-repeat;
 	background-position: left;
-	width:10px;
-	height:10px;
+	width: 10px;
+	height: 10px;
 }
 div.image {
-	float:right;
-	padding:20px 0px 20px 20px;
+	float: right;
+	padding: 20px 0px 20px 20px;
 }
 div.image table {
-	margin:0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
 }
 div.image table tr td p {
-	clear:both;
-	text-align:right;
-	font-size:x-small;
-	font-style:italic;
-	margin-top:0px;
-	color:#2C2C2C;
+	clear: both;
+	text-align: right;
+	font-size: x-small;
+	font-style: italic;
+	margin-top: 0px;
+	color: #2C2C2C;
 }
 img.image {
-	width:400px;
-	border:1px black solid;
-	padding:4px 4px 4px 4px;
+	width: 400px;
+	border: 1px black solid;
+	padding: 4px 4px 4px 4px;
 }
-.imagecontainer{
-	float:left;
+.imagecontainer {
+	float: left;
 	background: url('/moundville/images/image_shadow.gif') no-repeat right bottom;
 }
-.imagecontainer img{
+.imagecontainer img {
 	display: block;
-	position:relative;
+	position: relative;
 	background-color: #FFFFFF;
 	border: 1px solid #A9A9A9;
 	margin: -10px 10px 10px -10px;
