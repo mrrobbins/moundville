@@ -2,8 +2,10 @@
 <resources>
 
     <string name="app_name">Moundville</string>
-    <string name="launch_map">Map</string>
-    <string name="btn_myLocation">My Loc</string>
-    <string name="btn_layer_toggle">Satellite</string>
+    <string name="launch_barcode_scanner">Scanner</string>
+    <string name="launch_proximity_list">Explore Nearby</string>
+    <string name="launch_map">Park Map</string>
+    <string name="toggle_location">Location</string>
+    <string name="toggle_satellite">Satellite</string>
 
 </resources>

@@ -3,6 +3,7 @@ package edu.ua.moundville;
 import java.util.List;
 
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,7 @@ public class PlaceMap extends MapActivity {
 	private final static String TAG = "PlaceMap";
     private final MapActivity mapActivity = this;
     private final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
+    private final static GeoPoint THE_BLUFF = new GeoPoint(3322029,-87527894);
     private final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
     private final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
     
@@ -44,14 +46,16 @@ public class PlaceMap extends MapActivity {
         /* 	Then get the ZoomControls from the MapView */
         mapView.setBuiltInZoomControls(true);
         mapView.setSatellite(true);
+        mapView.setSaveEnabled(true);
+        mapView.setWillNotCacheDrawing(false);
         
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
         mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
         mapController.setZoom(17);
         
-        final Button btnMyLoc = (Button)this.findViewById(R.id.btn_myLocation);
-        final ToggleButton toggleLayer = (ToggleButton)this.findViewById(R.id.btn_layer_toggle);
+        final ToggleButton toggleLocation = (ToggleButton)this.findViewById(R.id.toggle_location);
+        final ToggleButton toggleSatellite = (ToggleButton)this.findViewById(R.id.toggle_satellite);
         
         /* adding overlays */
         mapOverlays = mapView.getOverlays();
@@ -62,8 +66,9 @@ public class PlaceMap extends MapActivity {
         poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MUSEUM, "",""));
         mapOverlays.add(poiOverlay);
         
-        locationOverlay = new MyLocationOverlay(this, mapView) {
-        	
+        locationOverlay = new MyLocationOverlay(this, mapView); 
+        
+//      {
 //        	@Override
 //        	public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
 //        		
@@ -87,46 +92,60 @@ public class PlaceMap extends MapActivity {
 //        		return false;
 //        	}
         	
-        };
+//      };
         
-        locationOverlay.enableMyLocation();
-//        locationOverlay.runOnFirstFix(new Runnable() {
-//        	public void run() {
-//        		mapController.animateTo(locationOverlay.getMyLocation());
-//        	}
-//        });
         
         mapOverlays.add(locationOverlay);
-        
-        btnMyLoc.setOnClickListener(new OnClickListener() {
+       
+        toggleLocation.setOnClickListener(new OnClickListener() {
         	@Override
         	public void onClick(View v) {
-        		//Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_LONG).show();
-        		
-        		GeoPoint myLocation = locationOverlay.getMyLocation();
-        		if (myLocation == null) {
-        			Toast.makeText(v.getContext(), "Location could not be found", Toast.LENGTH_SHORT).show();
-        		} else if (isLocationInRange(myLocation, MOUNDVILLE_LOCATION_CENTER, 100)) {
-        			mapController.animateTo(locationOverlay.getMyLocation());
-        			Toast.makeText(v.getContext(), "Showing your location near Moundville...", Toast.LENGTH_LONG);
+        		if (toggleLocation.isChecked()) {
+        			locationOverlay.enableMyLocation();
+        			Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_SHORT).show();
+        			locationOverlay.runOnFirstFix(new Runnable(){
+        				@Override
+        				public void run() {
+        					Runnable action = null;
+        					GeoPoint userLocation = locationOverlay.getMyLocation();
+
+        					if (userLocation == null) {
+        						action = new Runnable() {
+        							public void run() {
+        								Toast.makeText(findViewById(R.id.mapview).getContext(), "Your location could not be determined.", Toast.LENGTH_LONG).show();
+        								toggleLocation.performClick();
+        							}
+        						};
+
+        					} else if (isLocationInRange(userLocation, MOUNDVILLE_LOCATION_CENTER, 100)) {
+        						mapController.setZoom(17);
+        					} else {
+        						action = new Runnable() {
+        							public void run() {
+        								Toast.makeText(findViewById(R.id.mapview).getContext(), "You're location cannot be displayed.\n   You are too far from Moundville.", Toast.LENGTH_LONG).show();
+        								toggleLocation.performClick();
+        							}
+        						};
+        					}
+        					if (action != null) runOnUiThread(action);
+        				}
+        			});
         		} else {
-        			Toast.makeText(v.getContext(), "Your location is too far from Moundville...", Toast.LENGTH_LONG);
+        			locationOverlay.disableMyLocation();
         		}
         	}
         });
         
-        toggleLayer.setChecked(false);
-        toggleLayer.performClick();
-        toggleLayer.setOnClickListener(new OnClickListener() {
+        toggleSatellite.setChecked(true);
+        toggleSatellite.setOnClickListener(new OnClickListener() {
         	@Override
         	public void onClick(View v) {
-        		if (toggleLayer.isChecked()) {
+        		if (toggleSatellite.isChecked()) {
         			mapView.setSatellite(true);
         		} else {
         			mapView.setSatellite(false);
         		}
-        	}
-        });
+        	} });
     }
     
     private static boolean isLocationInRange(GeoPoint x, GeoPoint y, double distance) {
@@ -141,5 +160,9 @@ public class PlaceMap extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
+	}
+	
+	protected void onPause() {
+		super.onPause();
 	}
 }
