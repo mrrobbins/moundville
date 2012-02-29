@@ -27,6 +27,8 @@
         <activity android:name="PlaceMap"></activity>
         <activity android:name="ProximityList"></activity>
         <activity android:name="BarcodeScanner"></activity>
+        <activity android:name="ListAll"></activity>
+        <activity android:name="WebViewerActivity"></activity>
     </application>
 
 </manifest>
