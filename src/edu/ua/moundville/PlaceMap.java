@@ -98,13 +98,11 @@ public class PlaceMap extends MapActivity {
         mapOverlays.add(locationOverlay);
        
         toggleLocation.setOnClickListener(new OnClickListener() {
-        	@Override
         	public void onClick(View v) {
         		if (toggleLocation.isChecked()) {
         			locationOverlay.enableMyLocation();
         			Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_SHORT).show();
         			locationOverlay.runOnFirstFix(new Runnable(){
-        				@Override
         				public void run() {
         					Runnable action = null;
         					GeoPoint userLocation = locationOverlay.getMyLocation();
@@ -138,7 +136,6 @@ public class PlaceMap extends MapActivity {
         
         toggleSatellite.setChecked(true);
         toggleSatellite.setOnClickListener(new OnClickListener() {
-        	@Override
         	public void onClick(View v) {
         		if (toggleSatellite.isChecked()) {
         			mapView.setSatellite(true);
