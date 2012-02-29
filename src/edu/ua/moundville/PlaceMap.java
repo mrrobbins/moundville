@@ -53,7 +53,7 @@ public class PlaceMap extends MapActivity {
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
         //mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
-        mapController.animateTo(HOUSER_HALL);
+        mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
         mapController.setZoom(17);
         
         final ToggleButton toggleLocation = (ToggleButton)this.findViewById(R.id.toggle_location);
@@ -69,33 +69,6 @@ public class PlaceMap extends MapActivity {
         mapOverlays.add(poiOverlay);
         
         locationOverlay = new MyLocationOverlay(this, mapView); 
-        
-//      {
-//        	@Override
-//        	public boolean draw(Canvas canvas, MapView mapView, boolean shadow, long when) {
-//        		
-//        		GeoPoint myLocation = locationOverlay.getMyLocation();
-//        	
-//        		// Check if location is valid to draw
-//        		if (myLocation != null) {
-//
-//					Point mapLocation = mapView.getProjection().toPixels(myLocation, null);
-//
-//					BitmapDrawable locationIndicator = (BitmapDrawable) mapActivity.getResources().getDrawable(R.drawable.moundville_launcher);
-//
-//					locationIndicator.setAntiAlias(true);
-//					// Convert dp to pixel
-//					int dimPx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
-//					dimPx /= 2;
-//					locationIndicator.setBounds(mapLocation.x - dimPx, mapLocation.y - dimPx, mapLocation.x + dimPx, mapLocation.y + dimPx);
-//					locationIndicator.draw(canvas);
-//        		}
-//        		
-//        		return false;
-//        	}
-        	
-//      };
-        
         
         mapOverlays.add(locationOverlay);
        
@@ -117,7 +90,7 @@ public class PlaceMap extends MapActivity {
         							}
         						};
 
-        					} else if (isLocationInRange(userPoint, HOUSER_HALL, 500)) {
+        					} else if (isLocationInRange(userPoint, MOUNDVILLE_LOCATION_CENTER, 500)) {
         						mapController.setZoom(17);
         					} else {
         						action = new Runnable() {
