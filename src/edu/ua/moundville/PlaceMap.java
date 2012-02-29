@@ -25,6 +25,7 @@ public class PlaceMap extends MapActivity {
     private final MapActivity mapActivity = this;
     private final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
     private final static GeoPoint THE_BLUFF = new GeoPoint(3322029,-87527894);
+    private final static GeoPoint HOUSER_HALL = new GeoPoint(33214743,-87544427);
     private final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
     private final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
     
@@ -51,7 +52,8 @@ public class PlaceMap extends MapActivity {
         
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
-        mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
+        //mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
+        mapController.animateTo(HOUSER_HALL);
         mapController.setZoom(17);
         
         final ToggleButton toggleLocation = (ToggleButton)this.findViewById(R.id.toggle_location);
@@ -59,7 +61,7 @@ public class PlaceMap extends MapActivity {
         
         /* adding overlays */
         mapOverlays = mapView.getOverlays();
-        Drawable mapMarker = this.getResources().getDrawable(R.drawable.map_marker_green);
+        Drawable mapMarker = this.getResources().getDrawable(R.drawable.pin);
         poiOverlay = new ItemOverlay(mapMarker);
         poiOverlay.addItem(new OverlayItem(MOUNDVILLE_LOCATION_CENTER, "", ""));
         poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MOUND_A, "",""));
@@ -105,9 +107,9 @@ public class PlaceMap extends MapActivity {
         			locationOverlay.runOnFirstFix(new Runnable(){
         				public void run() {
         					Runnable action = null;
-        					GeoPoint userLocation = locationOverlay.getMyLocation();
+        					GeoPoint userPoint = locationOverlay.getMyLocation();
 
-        					if (userLocation == null) {
+        					if (userPoint == null) {
         						action = new Runnable() {
         							public void run() {
         								Toast.makeText(findViewById(R.id.mapview).getContext(), "Your location could not be determined.", Toast.LENGTH_LONG).show();
@@ -115,7 +117,7 @@ public class PlaceMap extends MapActivity {
         							}
         						};
 
-        					} else if (isLocationInRange(userLocation, MOUNDVILLE_LOCATION_CENTER, 100)) {
+        					} else if (isLocationInRange(userPoint, HOUSER_HALL, 500)) {
         						mapController.setZoom(17);
         					} else {
         						action = new Runnable() {
@@ -145,12 +147,18 @@ public class PlaceMap extends MapActivity {
         	} });
     }
     
-    private static boolean isLocationInRange(GeoPoint x, GeoPoint y, double distance) {
-    	double microDegreeDistance = Math.sqrt(Math.pow(x.getLatitudeE6()-y.getLatitudeE6(),2) + Math.pow(x.getLongitudeE6()-y.getLongitudeE6(),2));
-    	// divide micro-degrees by meters per micro-degree
-    	double meterDistance = microDegreeDistance / 0.1113196;
-    	Log.d(TAG, String.format("meterDistance = %f", meterDistance));
-    	return meterDistance < distance ? true : false;
+    private static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
+    	Location location1 = new Location("MyLocationOverlay");
+    	location1.setLatitude(point1.getLatitudeE6() / 1E6);
+    	location1.setLongitude(point1.getLongitudeE6() / 1E6);
+    	
+    	Location location2 = new Location("MyLocationOverlay");
+    	location2.setLatitude(point2.getLatitudeE6() / 1E6);
+    	location2.setLongitude(point2.getLongitudeE6() / 1E6);
+    	
+    	float meterDistance = location1.distanceTo(location2);
+    	
+    	return meterDistance <= distance ? true : false;
     }
         
 
