@@ -30,9 +30,6 @@ public class MoundvilleActivity extends Activity {
     		Log.d(TAG, "Clicked barcode_scanner");
     		Intent launchBarcodeScanner = new Intent(this, BarcodeScanner.class);
     		startActivity(launchBarcodeScanner);
-/*    		Activity bcscanner = new BarcodeScanner();
-    		IntentIntegrator integrator = new IntentIntegrator(bcscanner);
-    		integrator.initiateScan();*/
     	}
     }
 }
