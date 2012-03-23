@@ -9,8 +9,8 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 public class BarcodeScanner extends Activity {
+	private final static String TAG = "BarcodeScanner";
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -23,11 +23,11 @@ public class BarcodeScanner extends Activity {
 		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 		if (scanResult != null) {
 			String content = scanResult.getContents();
-			Log.d("BarcodeMessage", content);
+			Log.d(TAG, content);
 		} else {
-			Log.d("BarcodeMessage", "is null!");
+			Log.d(TAG, "Message is null!");
 		}
-		//Prevents activity screen from appearing on back
+		//Prevents activity screen from appearing on Android.back
 		finish();
 	}
 }
