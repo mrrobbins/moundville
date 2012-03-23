@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 public class MoundvilleActivity extends Activity {
 	private final String TAG = "MoundvilleActivity";
 	
@@ -28,6 +30,9 @@ public class MoundvilleActivity extends Activity {
     		Log.d(TAG, "Clicked barcode_scanner");
     		Intent launchBarcodeScanner = new Intent(this, BarcodeScanner.class);
     		startActivity(launchBarcodeScanner);
+/*    		Activity bcscanner = new BarcodeScanner();
+    		IntentIntegrator integrator = new IntentIntegrator(bcscanner);
+    		integrator.initiateScan();*/
     	}
     }
 }
