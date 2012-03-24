@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class DBHandler {
-	static final String URL = "http://";
+	static final String URL = "http://betatesting.as.ua.edu/mapexperience/DB-interface.php";
 	static final String CONNECTION = "blah";
 	
 	public DBHandler() {
