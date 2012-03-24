@@ -58,7 +58,7 @@ public class DBHandler {
 		        Log.e("log_tag", "Error converting result "+e.toString());
 		}
 		 
-		//parse json data
+		//parse json data - Example parsing for an id, name, sex, birthyear record
 		try{
 		        JSONArray jArray = new JSONArray(result);
 		        for(int i=0;i<jArray.length();i++){
