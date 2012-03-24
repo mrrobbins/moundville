@@ -20,7 +20,6 @@ public class ListAll extends ListActivity {
                 R.array.tut_titles, R.layout.simple_textview));
 	    getListView().setOnItemClickListener(new OnItemClickListener() {
 	    	 
-	        @Override
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	        	final String[] links = getResources().getStringArray(R.array.tut_links);
 	        	String content = links[position];
