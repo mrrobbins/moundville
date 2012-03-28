@@ -1,5 +1,7 @@
 package edu.ua.moundville;
 
+import java.util.ArrayList;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,7 +11,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 
-public class ListAll extends ListActivity {
+public class ListItems extends ListActivity {
+	
+	protected String selectQuery;
+	protected ArrayList<String> items;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -28,5 +33,13 @@ public class ListAll extends ListActivity {
 	            startActivity(showContent);
 	        }
 	    });
+	}
+	
+	protected void getItems() {
+		
+	}
+	
+	protected void launchArticle() {
+		
 	}
 }

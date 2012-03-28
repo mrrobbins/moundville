@@ -1,9 +1,14 @@
 package edu.ua.moundville;
 
-import android.app.Activity;
+import java.util.ArrayList;
+
 import android.os.Bundle;
 
-public class ArtifactArticle extends Activity {
+public class ArtifactArticle extends Article {
+	
+	private String timePeriod;
+	private ArrayList<String> categories;
+	private ArrayList<String> tags;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -11,6 +16,22 @@ public class ArtifactArticle extends Activity {
 	    super.onCreate(savedInstanceState);
 	
 	    // TODO Auto-generated method stub
+	}
+	
+	private void launchCategoryList() {
+		
+	}
+	
+	private void launchTagList() {
+		
+	}
+	
+	private void launchTimePeriod() {
+		
+	}
+	
+	private void getContent() {
+		
 	}
 
 }

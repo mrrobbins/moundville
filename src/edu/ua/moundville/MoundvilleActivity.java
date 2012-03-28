@@ -20,11 +20,11 @@ public class MoundvilleActivity extends Activity {
     public void buttonHandler(View view) {
     	if (view == findViewById(R.id.launch_map)) {
     		Log.d(TAG, "Clicked launch_map");
-    		Intent launchMap = new Intent(this, PlaceMap.class);
+    		Intent launchMap = new Intent(this, SiteMap.class);
     		startActivity(launchMap);
     	} else if (view == findViewById(R.id.launch_proximity_list)) {
     		Log.d(TAG, "Clicked proximity_list");
-    		Intent launchProximityList = new Intent(this, ListAll.class);
+    		Intent launchProximityList = new Intent(this, ListItems.class);
     		startActivity(launchProximityList);
     	} else if (view == findViewById(R.id.launch_barcode_scanner)) {
     		Log.d(TAG, "Clicked barcode_scanner");
