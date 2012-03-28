@@ -20,27 +20,27 @@ import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 
-public class PlaceMap extends MapActivity {
-	private final static String TAG = "PlaceMap";
-    private final MapActivity mapActivity = this;
-    private final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
-    private final static GeoPoint THE_BLUFF = new GeoPoint(3322029,-87527894);
-    private final static GeoPoint HOUSER_HALL = new GeoPoint(33214743,-87544427);
-    private final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
-    private final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
+public abstract class PlaceMap extends MapActivity {
+	protected final static String TAG = "PlaceMap";
+    protected final MapActivity mapActivity = this;
+    protected final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
+    protected final static GeoPoint THE_BLUFF = new GeoPoint(3322029,-87527894);
+    protected final static GeoPoint HOUSER_HALL = new GeoPoint(33214743,-87544427);
+    protected final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
+    protected final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
     
-	private MapView mapView;
-	private MapController mapController;
+	protected MapView mapView;
+	protected MapController mapController;
 	
-    private ItemOverlay poiOverlay;
-    private MyLocationOverlay locationOverlay;
-    private List<Overlay> mapOverlays;
+    protected MyLocationOverlay locationOverlay;
+    protected List<Overlay> mapOverlays;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.place_map);
+        
+	    setContentView(R.layout.place_map);
         
         /*	Capture the LinearLayout and MapView through their layout resources. */
         mapView = (MapView) findViewById(R.id.mapview);
@@ -61,17 +61,9 @@ public class PlaceMap extends MapActivity {
         
         /* adding overlays */
         mapOverlays = mapView.getOverlays();
-        Drawable mapMarker = this.getResources().getDrawable(R.drawable.pin);
-        poiOverlay = new ItemOverlay(mapMarker);
-        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_LOCATION_CENTER, "", ""));
-        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MOUND_A, "",""));
-        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MUSEUM, "",""));
-        mapOverlays.add(poiOverlay);
-        
         locationOverlay = new MyLocationOverlay(this, mapView); 
-        
         mapOverlays.add(locationOverlay);
-       
+        
         toggleLocation.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
         		if (toggleLocation.isChecked()) {
@@ -120,7 +112,9 @@ public class PlaceMap extends MapActivity {
         	} });
     }
     
-    private static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
+    abstract protected void populateMap();
+    
+    protected static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
     	Location location1 = new Location("MyLocationOverlay");
     	location1.setLatitude(point1.getLatitudeE6() / 1E6);
     	location1.setLongitude(point1.getLongitudeE6() / 1E6);
