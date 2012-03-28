@@ -27,16 +27,28 @@ public class DBHandler {
 		
 	}
 	
-	public void sendQuery(ArrayList<NameValuePair> SelectStatement) {
+	
+/*SendQuery for List - Acceptable formata for Params - 
+	("case", 1) ("lat", num) ("lon", num) - List Artifacts, Sites close to lat, lon
+	("case", 2) ("style", style) - List Artifacts with style tag (string)
+	("case", 3) ("site", Site_ID) - List Artifacts associated with Site ID (int)
+	("case", 4) ("cat", category) - List Artifacts with category tag (string)
+	("case", 5) ("timepd", time_period) - List Artifacts with time_period tag (string)
+	("case", 6) ("art", Artifact_ID) - Record of Artifact with Artifact_ID (int)
+	("case", 7) ("site", Site_ID) - Record of Site with Site_ID (int)
+	("case", 8) - List all Sites */
+public JSONArray sendQuery(ArrayList<NameValuePair> Params) {
 		
 		String result = "";
 		InputStream is = null;
+		
+		JSONArray jArray = null;
 		 
 		//http post
 		try{
 		        HttpClient httpclient = new DefaultHttpClient();
 		        HttpPost httppost = new HttpPost(URL);
-		        httppost.setEntity(new UrlEncodedFormEntity(SelectStatement));
+		        httppost.setEntity(new UrlEncodedFormEntity(Params));
 		        HttpResponse response = httpclient.execute(httppost);
 		        HttpEntity entity = response.getEntity();
 		        is = entity.getContent();
@@ -54,29 +66,16 @@ public class DBHandler {
 		        is.close();
 		 
 		        result=sb.toString();
+		        jArray = new JSONArray(result);
+		       
 		}catch(Exception e){
 		        Log.e("log_tag", "Error converting result "+e.toString());
 		}
-		 
-		//parse json data - Example parsing for an id, name, sex, birthyear record
-		try{
-		        JSONArray jArray = new JSONArray(result);
-		        for(int i=0;i<jArray.length();i++){
-		                JSONObject json_data = jArray.getJSONObject(i);
-		                Log.i("log_tag","id: "+json_data.getInt("id")+
-		                        ", name: "+json_data.getString("name")+
-		                        ", sex: "+json_data.getInt("sex")+
-		                        ", birthyear: "+json_data.getInt("birthyear")
-		                );
-		        }
-		}catch(JSONException e){
-		        Log.e("log_tag", "Error parsing data "+e.toString());
-		}
 		
-		
-		
-		
-		
-		
+		 return jArray;
 	}
 }
+
+
+	
+	
