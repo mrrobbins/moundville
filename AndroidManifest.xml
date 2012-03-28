@@ -27,7 +27,7 @@
         <activity android:name="PlaceMap"></activity>
         <activity android:name="ProximityList"></activity>
         <activity android:name="BarcodeScanner"></activity>
-        <activity android:name="ListAll"></activity>
+        <activity android:name=".ListItems"></activity>
         <activity android:name="WebViewerActivity"></activity>
         <activity android:name="SiteMap"></activity>
         <activity android:name="ArtifactMap"></activity>
