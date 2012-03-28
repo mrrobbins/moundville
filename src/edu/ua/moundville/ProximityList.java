@@ -1,9 +1,13 @@
 package edu.ua.moundville;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class ProximityList extends Activity {
+import com.google.android.maps.GeoPoint;
+
+public class ProximityList extends ListItems {
+	
+	private static final String query = "Select items near me";
+	private static GeoPoint location;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -12,5 +16,17 @@ public class ProximityList extends Activity {
 	
 	    // TODO Auto-generated method stub
 	}
-
+	
+	/* check if near moundville */
+	private boolean isLocationApplicable() {
+		return false;
+	}
+	
+	private int getLongitude() {
+		return 0;
+	}
+	
+	private int getLatitude() {
+		return 0;
+	}
 }
