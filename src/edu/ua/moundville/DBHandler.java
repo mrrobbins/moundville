@@ -89,11 +89,11 @@ public class DBHandler {
 				Log.e(TAG, "Error converting result "+e.toString());
 			}
 			
-			((DBResult) activity).recieveResult(jArray);
+			((DBResult) activity).receiveResult(jArray);
 		}
 	}
 	
 	public interface DBResult {
-		void recieveResult(JSONArray jArray);
+		void receiveResult(JSONArray jArray);
 	}
 }

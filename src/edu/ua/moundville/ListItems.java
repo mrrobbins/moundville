@@ -55,7 +55,7 @@ public class ListItems extends ListActivity implements DBResult {
 		
 	}
 	
-	public void recieveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray) {
 	    Log.d(TAG, jArray.toString());
 	}
 }
