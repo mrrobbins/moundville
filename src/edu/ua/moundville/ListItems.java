@@ -34,6 +34,8 @@ public class ListItems extends ListActivity implements DBResult {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
+	    setCase();
+	    
 	    setupQuery();
 	    
 	    db.sendQuery(this, queryArgs);
@@ -54,11 +56,31 @@ public class ListItems extends ListActivity implements DBResult {
 	    });
 	}
 	
-	private void setupQuery() {
+	private void setCase() {
 	    DBCase = getIntent().getExtras().getInt("case");
 	    if (DBCase <= 0 ) {
 	    	/* TODO error */
 	    }
+	    switch(DBCase) {
+	    case 2:
+	    	setTitle("Style");
+	    	break;
+	    case 3:
+	    	setTitle("Artifacts");
+	    	break;
+	    case 4:
+	    	setTitle("Category");
+	    	break;
+	    case 5:
+	    	setTitle("Time Period");
+	    	break;
+	    case 8:
+	    	setTitle("All Sites");
+	    	break;
+	    }
+	}
+	
+	private void setupQuery() {
 	    queryArgs.add(new BasicNameValuePair("case", String.valueOf(DBCase)));
 	    switch (DBCase) {
 	    	case 2:
@@ -68,6 +90,7 @@ public class ListItems extends ListActivity implements DBResult {
 	    	case 3: 
 	    		String siteID = getIntent().getExtras().getString("site");
 	    		queryArgs.add(new BasicNameValuePair("site", siteID));
+	    		Log.d(TAG, "siteID = " + siteID);
 	    		break;
 		    case 4: 
 	    		String catName = getIntent().getExtras().getString("cat");
@@ -77,8 +100,11 @@ public class ListItems extends ListActivity implements DBResult {
 	    		String timepd = getIntent().getExtras().getString("timepd");
 	    		queryArgs.add(new BasicNameValuePair("timepd", timepd));
 	    		break;
+		    case 8:
+		    	break;
 	    	// No case matched
 	    	/* TODO return error code or display error toast before returning */
+		    /* not working */
 	    	default: finish();
 	    }
 	}
@@ -104,8 +130,8 @@ public class ListItems extends ListActivity implements DBResult {
 						listLinks.add(obj.getString("pk_Tag_TagID"));
 						break;
 					case 3: 
-						listItems.add(obj.getString("ak_Site_SiteName"));
-						listLinks.add(obj.getString("pk_Site_SiteID"));
+						listItems.add(obj.getString("ak_Art_Title"));
+						listLinks.add(obj.getString("pk_Art_ArtID"));
 						break;
 					case 4: 
 						listItems.add(obj.getString("ak_Cat_Name"));
@@ -114,6 +140,10 @@ public class ListItems extends ListActivity implements DBResult {
 					case 5:
 						listItems.add(obj.getString("ak_Time_TimeID"));
 						listLinks.add(obj.getString("pk_Time_TimePeriod"));
+						break;
+					case 8:
+						listItems.add(obj.getString("ak_Site_SiteName"));
+						listLinks.add(obj.getString("pk_Site_SiteID"));
 						break;
 						// No case matched
 						/* TODO return error code or display error toast before returning */

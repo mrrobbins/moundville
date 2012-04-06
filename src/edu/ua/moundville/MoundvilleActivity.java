@@ -26,7 +26,8 @@ public class MoundvilleActivity extends Activity {
     	} else if (view == findViewById(R.id.launch_proximity_list)) {
     		Log.d(TAG, "Clicked proximity_list");
     		Intent launchProximityList = new Intent(this, ListItems.class);
-    		launchProximityList.putExtra("case", 8);
+    		launchProximityList.putExtra("case", 3);
+    		launchProximityList.putExtra("site", "2");
     		startActivity(launchProximityList);
     	} else if (view == findViewById(R.id.launch_barcode_scanner)) {
     		Log.d(TAG, "Clicked barcode_scanner");
