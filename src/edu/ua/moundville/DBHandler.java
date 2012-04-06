@@ -1,5 +1,4 @@
-package edu.ua.moundville;
-
+package edu.ua.moundville; 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +16,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 
-import android.app.Activity; import android.util.Log; 
+import android.app.Activity;
+import android.util.Log;
 public class DBHandler {
 	static final String TAG = "DBHandler";
 	static final String URL = "http://betatesting.as.ua.edu/mapexperience/DB-interface.php";
@@ -36,7 +36,7 @@ public class DBHandler {
 	("case", 8) - List all Sites */
 	public void sendQuery(Activity activity, ArrayList<NameValuePair> params) {
 		NetworkHelper nHelper = new NetworkHelper(activity, params);
-		new Thread(nHelper).start();
+		(new Thread(nHelper)).start();
 	}
 
 	public class NetworkHelper implements Runnable {
@@ -89,11 +89,18 @@ public class DBHandler {
 				Log.e(TAG, "Error converting result "+e.toString());
 			}
 			
-			((DBResult) activity).receiveResult(jArray);
+			final JSONArray jArray2 = jArray;
+			activity.runOnUiThread(new Runnable() {
+				
+				public void run() {
+					/* TODO: Unsafe cast, must restrict to implements DBResult */
+					((DBResult) activity).receiveResult(jArray2);
+				}
+			});
 		}
 	}
 	
-	public interface DBResult {
+	public static interface DBResult {
 		void receiveResult(JSONArray jArray);
 	}
 }
