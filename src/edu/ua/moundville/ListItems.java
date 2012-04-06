@@ -23,30 +23,44 @@ public class ListItems extends ListActivity implements DBResult {
 	
 	private static final String TAG = "ListItems";
 	protected String selectQuery;
-	protected ArrayList<String> items = new ArrayList<String>();
+	protected ArrayList<NameValuePair> queryArgs = new ArrayList<NameValuePair>();
+	protected final ArrayList<String> items = new ArrayList<String>();
+	protected final ArrayList<String> links = new ArrayList<String>();
+	protected static DBHandler db = new DBHandler();
+	protected int DBCase; 
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
-	    DBHandler db = new DBHandler();
-	    ArrayList<NameValuePair> nvp = new ArrayList<NameValuePair>();
-	    nvp.add(new BasicNameValuePair("case", "8"));
-	    db.sendQuery(this, nvp);
+	    setupQuery();
+	    
+	    db.sendQuery(this, queryArgs);
+	    
+	    getListView().setOnItemClickListener(new OnItemClickListener() {
+	    	 
+	    	Intent launchActivity;
+	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+	        	if (DBCase == 5555) {
+	            	launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
+	        	} else if (DBCase == 6666) {
+	            	launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
+	        	}
+	            startActivity(launchActivity);
+	        }
+	    });
+	}
 	
-//	    setListAdapter(ArrayAdapter.createFromResource(getApplicationContext(), R.array.tut_titles, R.layout.simple_textview));
-//	    
-//	    getListView().setOnItemClickListener(new OnItemClickListener() {
-//	    	 
-//	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//	        	final String[] links = getResources().getStringArray(R.array.tut_links);
-//	        	String content = links[position];
-//	            Intent showContent = new Intent(getApplicationContext(), WebViewerActivity.class);
-//	            showContent.setData(Uri.parse(content));
-//	            startActivity(showContent);
-//	        }
-//	    });
+	private void setupQuery() {
+		
+	    DBCase = getIntent().getExtras().getInt("case");
+	    switch (DBCase) {
+	    	case 8: break;
+	    	default: break;
+	    }
+	    
+		queryArgs.add(new BasicNameValuePair("case", "8"));
 	}
 	
 	protected void getItems() {
@@ -59,20 +73,25 @@ public class ListItems extends ListActivity implements DBResult {
 	
 	public void receiveResult(JSONArray jArray) {
 		
-	    Log.d(TAG, jArray.toString());
-	    
-	    
-	    for (int i=0; i<jArray.length(); i++) {
-	    	JSONObject obj = null;
-	    	try {
-				obj = (JSONObject) jArray.get(i);
-				items.add(obj.getString("ak_Site_SiteName"));
-				
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		if (jArray == null) {
+			items.add("I failed :(");
+		} else {
+
+			Log.d(TAG, jArray.toString());
+
+
+			for (int i=0; i<jArray.length(); i++) {
+				JSONObject obj = null;
+				try {
+					obj = (JSONObject) jArray.get(i);
+					items.add(obj.getString("ak_Site_SiteName"));
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-	    }
+		}
 	    
 	    prepareList();
 	}
