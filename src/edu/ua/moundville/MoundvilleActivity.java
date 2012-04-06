@@ -17,6 +17,7 @@ public class MoundvilleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.moundville_activity);
     }
+    
     public void buttonHandler(View view) {
     	if (view == findViewById(R.id.launch_map)) {
     		Log.d(TAG, "Clicked launch_map");
@@ -25,6 +26,7 @@ public class MoundvilleActivity extends Activity {
     	} else if (view == findViewById(R.id.launch_proximity_list)) {
     		Log.d(TAG, "Clicked proximity_list");
     		Intent launchProximityList = new Intent(this, ListItems.class);
+    		launchProximityList.putExtra("case", 8);
     		startActivity(launchProximityList);
     	} else if (view == findViewById(R.id.launch_barcode_scanner)) {
     		Log.d(TAG, "Clicked barcode_scanner");
