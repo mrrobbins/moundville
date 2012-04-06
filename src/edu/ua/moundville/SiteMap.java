@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.google.android.maps.GeoPoint;
 
+import com.readystatesoftware.mapviewballoons.*;
+
 public class SiteMap extends PlaceMap {
 	private final static GeoPoint MOUNDVILLE_SITES = new GeoPoint(33005263, -87631438);
 	CustomItemizedOverlay<CustomOverlayItem> itemOverlay;
@@ -19,9 +21,9 @@ public class SiteMap extends PlaceMap {
         itemOverlay = new CustomItemizedOverlay<CustomOverlayItem>(mapMarker,mapView);
        
         
-        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_LOCATION_CENTER, "Moundville", "The Geographical Center of the Park",""));
-        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_MOUND_A, "Mound A","The second largest mound in the park",""));
-        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_MUSEUM, "MOundville Museum","A collection of pottery awaits.",""));
+        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_LOCATION_CENTER, "Moundville", "The Geographical Center of the Park","", "0"));
+        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_MOUND_A, "Mound A","The second largest mound in the park","","1"));
+        itemOverlay.addOverlay(new CustomOverlayItem(MOUNDVILLE_MUSEUM, "MOundville Museum","A collection of pottery awaits.","","2"));
         
         mapOverlays.add(itemOverlay);
         
