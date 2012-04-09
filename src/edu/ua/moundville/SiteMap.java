@@ -98,11 +98,18 @@ public class SiteMap extends PlaceMap implements DBResult {
 					record.add(obj.getString("Site_Longitude"));
 					record.add(obj.getString("Img_Image"));
 
-
-					Log.d(TAG, record.get(2).toString());
+					
+					
+					Log.d("RECORD-ID", record.get(0).toString());
+					Log.d("RECORD-NAME", record.get(1).toString());
+					Log.d("RECORD-BODY", record.get(2).toString());
+					Log.d("RECORD-LAT", record.get(3).toString());
+					Log.d("RECORD-LON", record.get(4).toString());
+					Log.d("RECORD-IMG", record.get(5).toString());
+					//FUCKING BROKE ASS LINE
 					
 					items.add(record);
-					
+
 				} catch (JSONException e) {
 					
 					e.printStackTrace();
