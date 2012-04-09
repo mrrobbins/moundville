@@ -28,7 +28,6 @@ public class SiteMap extends PlaceMap implements DBResult {
     protected ArrayList<NameValuePair> queryArgs = new ArrayList<NameValuePair>();
     protected ArrayList<ArrayList<String>> items = new ArrayList<ArrayList<String>>();
     
-    private GeoPoint RecordLoc = new GeoPoint(0, 0);
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -37,28 +36,25 @@ public class SiteMap extends PlaceMap implements DBResult {
         mapMarker = this.getResources().getDrawable(R.drawable.pin);
         itemOverlay = new CustomItemizedOverlay<CustomOverlayItem>(mapMarker,mapView);
         
-        items = null;
        
         getSites();
         
+
         
-        populateMap();
 	}
 	
 	protected void populateMap() {
 		
-		
 		/* check or app will crash */
-		if (items != null) {
+		if (items.size() != 0) {
 			
 			for (int i=0; i<items.size(); i++) {
 				ArrayList<String> record = new ArrayList<String>();
 				
 				record = items.get(i);
+			
 				
-				RecordLoc.equals(new GeoPoint(Integer.parseInt(record.get(3)),Integer.parseInt(record.get(4))));
-					
-				itemOverlay.addOverlay(new CustomOverlayItem( RecordLoc , record.get(1), record.get(2),record.get(5), record.get(0)));
+				itemOverlay.addOverlay(new CustomOverlayItem( (new GeoPoint((int) (Double.parseDouble(record.get(3))*1e6),(int) (Double.parseDouble(record.get(4))*1e6))) , record.get(1), record.get(2),record.get(5), record.get(0)));
 				
 			}
 			
@@ -71,7 +67,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 	private void getSites() {
 		queryArgs.add(new BasicNameValuePair("case","8"));
 		db.sendQuery(this, queryArgs);
-	    
+
 	}
 
 	public void receiveResult(JSONArray jArray) {
@@ -82,7 +78,6 @@ public class SiteMap extends PlaceMap implements DBResult {
 		} else {
 
 			Log.d(TAG, jArray.toString());
-
 			
 			for (int i=0; i<jArray.length(); i++) {
 				JSONObject obj = null;
@@ -99,15 +94,6 @@ public class SiteMap extends PlaceMap implements DBResult {
 					record.add(obj.getString("Img_Image"));
 
 					
-					
-					Log.d("RECORD-ID", record.get(0).toString());
-					Log.d("RECORD-NAME", record.get(1).toString());
-					Log.d("RECORD-BODY", record.get(2).toString());
-					Log.d("RECORD-LAT", record.get(3).toString());
-					Log.d("RECORD-LON", record.get(4).toString());
-					Log.d("RECORD-IMG", record.get(5).toString());
-					//FUCKING BROKE ASS LINE
-					
 					items.add(record);
 
 				} catch (JSONException e) {
@@ -116,7 +102,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 				}
 			}
 		}
-		
+		populateMap();
 	}
 }
         /* adding overlays */
