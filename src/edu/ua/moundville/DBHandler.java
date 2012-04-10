@@ -86,7 +86,7 @@ public class DBHandler {
 				jArray = new JSONArray(result);
 
 			}catch(Exception e){
-				Log.e(TAG, "Error converting result "+e.toString());
+				Log.e(TAG, "Error converting result: "+e.toString());
 			}
 			
 			final JSONArray jArray2 = jArray;

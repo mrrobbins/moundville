@@ -62,6 +62,9 @@ public class ListItems extends ListActivity implements DBResult {
 	    	/* TODO error */
 	    }
 	    switch(DBCase) {
+	    case 1:
+	    	setTitle("Near By");
+	    	break;
 	    case 2:
 	    	setTitle("Style");
 	    	break;
@@ -77,12 +80,26 @@ public class ListItems extends ListActivity implements DBResult {
 	    case 8:
 	    	setTitle("All Sites");
 	    	break;
+	    default:
+	    	setTitle("List");
+	    	break;
 	    }
 	}
 	
 	private void setupQuery() {
 	    queryArgs.add(new BasicNameValuePair("case", String.valueOf(DBCase)));
 	    switch (DBCase) {
+	    	case 1:
+	    		GeoPoint userLocation = null;
+	    		userLocation PlaceMap.getLocation();
+	    		String lat = String.valueOf(PlaceMap.getLatitude());
+	    		String lon = String.valueOf(PlaceMap.getLongitude());
+	    		if (lat == "-1" || lon == "-1") {
+	    			finish();
+	    		}
+	    		queryArgs.add(new BasicNameValuePair("lat", lat));
+	    		queryArgs.add(new BasicNameValuePair("lon", lon));
+	    		break;
 	    	case 2:
 	    		String styleName = getIntent().getExtras().getString("style");
 	    		queryArgs.add(new BasicNameValuePair("style", styleName));
