@@ -10,6 +10,9 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class BarcodeScanner extends Activity {
 	private final static String TAG = "BarcodeScanner";
+	private static IntentResult scanResult = null;
+	private static String scanContent = null;
+	private static final String BARCODE_FORMAT = "[AS]:[0-9]+";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,14 +23,20 @@ public class BarcodeScanner extends Activity {
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-		IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-		if (scanResult != null) {
-			String content = scanResult.getContents();
-			Log.d(TAG, content);
+		scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+		if (scanResult != null && (scanContent = scanResult.getContents()) != null) {
+			Log.d(TAG, scanContent);
+			if (validContent(scanContent)) {
+				
+			}
 		} else {
 			Log.d(TAG, "Message is null!");
 		}
-		//Prevents activity screen from appearing on Android.back
+		//Prevents activity screen from appearing on Android.back()
 		finish();
+	}
+	
+	private boolean validContent(String scanContent) {
+		return scanContent.matches(BARCODE_FORMAT); 
 	}
 }
