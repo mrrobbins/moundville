@@ -81,31 +81,26 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	    queryArgs.add(new BasicNameValuePair("lon", String.valueOf(location.getLongitude())));
 	}
 	
-	@Override
 	public void onLocationChanged(Location newLocation) {
 		location = newLocation;
 		setupQuery();
 	}
 
-	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void receiveResult(JSONArray jArray) {
 		if (jArray == null) {
 			listText.add("I failed :(");
@@ -118,7 +113,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 					obj = (JSONObject) jArray.get(i);
 					listText.add(obj.getString("ak_Art_Title"));
 					listLinks.add(obj.getString("pk_Art_ArtID"));
-					listImages.add(obj.getString("fk_ArtPrimaryImg_ImgImgID"));
+					listImages.add(obj.getString("Img_Image"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
