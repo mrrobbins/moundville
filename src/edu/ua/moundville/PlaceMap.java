@@ -127,7 +127,7 @@ public abstract class PlaceMap extends MapActivity {
     	
     	return meterDistance <= distance ? true : false;
     }
-        
+    
 
 	@Override
 	protected boolean isRouteDisplayed() {
