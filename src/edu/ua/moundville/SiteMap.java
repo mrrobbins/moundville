@@ -91,7 +91,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 					record.add(obj.getString("Site_Body2"));
 					record.add(obj.getString("Site_Latitude"));
 					record.add(obj.getString("Site_Longitude"));
-					record.add(obj.getString("Img_Image"));
+					record.add(obj.getString("Img_ImageThumb"));
 
 					
 					items.add(record);

@@ -113,7 +113,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 					obj = (JSONObject) jArray.get(i);
 					listText.add(obj.getString("ak_Art_Title"));
 					listLinks.add(obj.getString("pk_Art_ArtID"));
-					listImages.add(obj.getString("Img_Image"));
+					listImages.add(obj.getString("Img_ImageThumb"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
