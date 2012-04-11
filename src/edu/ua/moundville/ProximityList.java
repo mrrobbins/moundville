@@ -39,7 +39,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setTitle("Near By");
+	    setTitle("Explore Nearby");
 	    
 	    LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 	    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
