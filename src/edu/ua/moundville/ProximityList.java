@@ -29,7 +29,8 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	private static final float MIN_UPDATE_DISTANCE = 10;
 	private static Location location = null;
 	protected ArrayList<NameValuePair> queryArgs = new ArrayList<NameValuePair>();
-	protected final ArrayList<String> listItems = new ArrayList<String>();
+	protected final ArrayList<String> listText = new ArrayList<String>();
+	protected final ArrayList<String> listImages = new ArrayList<String>();
 	protected final ArrayList<String> listLinks = new ArrayList<String>();
 	protected static DBHandler db = new DBHandler();
 	private static final String TAG = "ProximityList";
@@ -107,7 +108,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	@Override
 	public void receiveResult(JSONArray jArray) {
 		if (jArray == null) {
-			listItems.add("I failed :(");
+			listText.add("I failed :(");
 		} else {
 			Log.d(TAG, jArray.toString());
 
@@ -115,8 +116,9 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 				JSONObject obj = null;
 				try {
 					obj = (JSONObject) jArray.get(i);
-					listItems.add(obj.getString("ak_Art_Title"));
+					listText.add(obj.getString("ak_Art_Title"));
 					listLinks.add(obj.getString("pk_Art_ArtID"));
+					listImages.add(obj.getString("fk_ArtPrimaryImg_ImgImgID"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -128,6 +130,6 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	}
 	
 	private void prepareList() {
-	    setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems));
+	    setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listText));
 	}
 }
