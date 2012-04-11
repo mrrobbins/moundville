@@ -45,11 +45,11 @@ public class ListItems extends ListActivity implements DBResult {
 	    	Intent launchActivity;
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	        	if (2 <= DBCase && DBCase <= 5) {
-	        		launchActivity.putExtra("artifact", listLinks.get(position));
 	            	launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
+	        		launchActivity.putExtra("artifact", listLinks.get(position));
 	        	} else {
-	        		launchActivity.putExtra("site", listLinks.get(position));
 	            	launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
+	        		launchActivity.putExtra("site", listLinks.get(position));
 	        	}
 	            startActivity(launchActivity);
 	        }
