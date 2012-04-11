@@ -18,6 +18,7 @@ package edu.ua.moundville;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 import com.google.android.maps.MapView;
@@ -62,5 +63,11 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 		// use our custom balloon view with our custom overlay item type:
 		return new CustomBalloonOverlayView<CustomOverlayItem>(getMapView().getContext(), getBalloonBottomOffset());
 	}
-
+	@Override
+    public void draw(final Canvas canvas, final MapView mapView, final boolean shadow) {
+        // Don't draw the shadow layer
+        if (!shadow) {
+            super.draw(canvas, mapView, shadow);
+        }
+    }
 }
