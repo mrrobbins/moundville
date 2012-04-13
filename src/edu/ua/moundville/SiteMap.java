@@ -36,11 +36,7 @@ public class SiteMap extends PlaceMap implements DBResult {
         mapMarker = this.getResources().getDrawable(R.drawable.pin);
         itemOverlay = new CustomItemizedOverlay<CustomOverlayItem>(mapMarker,mapView);
         
-       
         getSites();
-        
-
-        
 	}
 	
 	protected void populateMap() {
@@ -52,10 +48,8 @@ public class SiteMap extends PlaceMap implements DBResult {
 				ArrayList<String> record = new ArrayList<String>();
 				
 				record = items.get(i);
-			
 				
 				itemOverlay.addOverlay(new CustomOverlayItem(getApplicationContext(), (new GeoPoint((int) (Double.parseDouble(record.get(3))*1e6),(int) (Double.parseDouble(record.get(4))*1e6))) , record.get(1), record.get(2),record.get(5), record.get(0)));
-				
 			}
 			
 			mapOverlays.add(itemOverlay);
