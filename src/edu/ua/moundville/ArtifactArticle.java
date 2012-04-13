@@ -131,7 +131,6 @@ public class ArtifactArticle extends Activity implements DBResult {
 		Button button = new Button(this);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
-			@Override
 			public void onClick(View v) {
 				Intent launchActivity;
 	        	launchActivity = new Intent(getApplicationContext(), ListItems.class);
@@ -154,7 +153,6 @@ public class ArtifactArticle extends Activity implements DBResult {
 		layout.addView(textView);
 	}
 
-	@Override
 	public void receiveResult(JSONArray jArray) {
 		if (jArray == null) {
 			//Handle Failure

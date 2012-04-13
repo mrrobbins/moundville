@@ -28,14 +28,16 @@ public class BarcodeScanner extends Activity {
 			Log.d(TAG, scanContent);
 			
 			if (scanContent.matches(BARCODE_FORMAT_ARTIFACT)) {
-				
-				launchActivity.putExtra("artifact",scanContent.substring(10));
+
 				launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
-				
+				launchActivity.putExtra("artifact",scanContent.split(":")[1]);
+				startActivity(launchActivity);
 			}
 			else if (scanContent.matches(BARCODE_FORMAT_SITE)){
-				launchActivity.putExtra("site",scanContent.substring(6));
+
 				launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
+				launchActivity.putExtra("site",scanContent.split(":")[1]);
+				startActivity(launchActivity);
 			}
 		} else {
 			Log.d(TAG, "Message is null!");
