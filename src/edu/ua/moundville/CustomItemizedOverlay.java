@@ -18,18 +18,23 @@ package edu.ua.moundville;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
+
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
-import com.readystatesoftware.mapviewballoons.*;
+import com.readystatesoftware.mapviewballoons.BalloonItemizedOverlay;
+import com.readystatesoftware.mapviewballoons.BalloonOverlayView;
 
 
 public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItemizedOverlay<CustomOverlayItem> {
 
 	private ArrayList<CustomOverlayItem> m_overlays = new ArrayList<CustomOverlayItem>();
 	private Context c;
+	private static final String FORMAT_SITE = "site:\\d+";
+	private static final String FORMAT_ARTIFACT = "artifact:\\d+";
 	
 	public CustomItemizedOverlay(Drawable defaultMarker, MapView mapView) {
 		super(boundCenter(defaultMarker), mapView);
@@ -53,8 +58,25 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 
 	@Override
 	protected boolean onBalloonTap(int index, CustomOverlayItem item) {
-		Toast.makeText(c, "Idenifier for Record " + item.Identifier,
+		final String itemID = item.getID();
+		Toast.makeText(c, "Idenifier for Record " + itemID,
 				Toast.LENGTH_LONG).show();
+		
+		Context outerContext = item.getContext();
+		Intent launchArticle;
+		if (itemID.matches(FORMAT_SITE)) {
+			
+			launchArticle = new Intent(outerContext, SiteArticle.class);
+			launchArticle.putExtra("site", itemID.split(":")[1]);
+			outerContext.startActivity(launchArticle);
+			
+		} else if (itemID.matches(FORMAT_ARTIFACT)) {
+			launchArticle = new Intent(outerContext, ArtifactArticle.class);
+			launchArticle.putExtra("artifact", itemID.split(":")[1]);
+			outerContext.startActivity(launchArticle);
+		} else {
+			//error
+		}
 		return true;
 	}
 

@@ -1,14 +1,6 @@
 package edu.ua.moundville;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -16,12 +8,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -35,14 +24,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import edu.ua.moundville.DBHandler.DBResult;
 
-public class ArtifactArticle extends Activity implements DBResult {
+public class ArtifactArticle extends Article implements DBResult {
 	
 	private static final String TAG = "ArtifactArticle";
 	private String artifactID;
 	private String artifactTitle;
 	private String artifactBody;
-	private String primaryImageSubUrl;
-	private ImageView primaryImage;
 	private final String URL = "http://betatesting.as.ua.edu/mapexperience/images";
 	private String[] timePeriod = new String[2];
 	private ArrayList<String> categories= new ArrayList<String>();
@@ -54,7 +41,7 @@ public class ArtifactArticle extends Activity implements DBResult {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-        setContentView(R.layout.artifact_article);
+        setContentView(R.layout.article);
 	    
         queryArgs.add(new BasicNameValuePair("case", "6"));
 	    artifactID = getIntent().getExtras().getString("artifact");
@@ -62,23 +49,7 @@ public class ArtifactArticle extends Activity implements DBResult {
 	    db.sendQuery(this, queryArgs);
 	}
 	
-	private void launchCategoryList() {
-		
-	}
-	
-	private void launchTagList() {
-		
-	}
-	
-	private void launchTimePeriod() {
-		
-	}
-	
-	private void getContent() {
-		
-	}
-	
-	private void prepareContent() {
+	protected void prepareContent() {
 		setTitle(artifactTitle);
 		
 		Spanned formatedText = Html.fromHtml(artifactBody);
@@ -127,7 +98,7 @@ public class ArtifactArticle extends Activity implements DBResult {
 		list.add(item);
 	}
 	
-	private void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
+	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
 		Button button = new Button(this);
 		button.setWidth(50);
 		button.setText(name);
@@ -146,7 +117,7 @@ public class ArtifactArticle extends Activity implements DBResult {
 		layout.addView(button);
 	}
 	
-	private void addFieldToLayout(LinearLayout layout, String text) {
+	protected void addFieldToLayout(LinearLayout layout, String text) {
 		TextView textView = new TextView(this);
 		textView.setText(text);
 		textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -183,19 +154,5 @@ public class ArtifactArticle extends Activity implements DBResult {
 		}
 		
 		prepareContent();
-	}
-	private class FetchImageTask extends AsyncTask<String, Integer, Bitmap> {
-	    @Override
-	    protected Bitmap doInBackground(String... arg0) {
-	    	Bitmap b = null;
-	    	try {
-				 b = BitmapFactory.decodeStream((InputStream) new URL(arg0[0]).getContent());
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} 
-	        return b;
-	    }	
 	}
 }

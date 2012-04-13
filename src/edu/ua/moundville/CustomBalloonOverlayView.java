@@ -57,7 +57,6 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
 		image = (ImageView) v.findViewById(R.id.balloon_item_image);
 		identifier = (TextView) v.findViewById(R.id.balloon_item_identifier);
-
 	}
 
 	@Override
