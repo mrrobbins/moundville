@@ -1,3 +1,4 @@
+
 package edu.ua.moundville;
 
 import java.util.ArrayList;
@@ -93,10 +94,3 @@ public class SiteMap extends PlaceMap implements DBResult {
 		populateMap();
 	}
 }
-        /* adding overlays */
-//        Drawable mapMarker = this.getResources().getDrawable(R.drawable.pin);
-//        poiOverlay = new ItemOverlay(mapMarker);
-//        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_LOCATION_CENTER, "", ""));
-//        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MOUND_A, "",""));
-//        poiOverlay.addItem(new OverlayItem(MOUNDVILLE_MUSEUM, "",""));
-//        mapOverlays.add(poiOverlay);

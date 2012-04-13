@@ -67,31 +67,17 @@ public class SiteArticle extends Article implements DBResult {
 	
 	private void addSiteFields() {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
-	}
-	
-	private void addOptionalFields(LinearLayout layout, ArrayList<String> fields, String DbCase, String argKey) {
-		for (int i=0 ; i < fields.size(); i++) {
-			addButton(layout, fields.get(i), DbCase, argKey);
-		}
-	}
-	
-	private void addToArrayList(ArrayList<String> list, String item) {
-		for (int i = 0; i<list.size(); i++) {
-			if (list.get(i).equals(item)) {
-				return;
-			}
-		}
-		
-		list.add(item);
+		addButton(layout, "View map of " + siteTitle + " artifacts", "3", "site");
 	}
 	
 	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
 		Button button = new Button(this);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
+			
 			public void onClick(View v) {
 				Intent launchActivity;
-	        	launchActivity = new Intent(getApplicationContext(), ListItems.class);
+	        	launchActivity = new Intent(SiteArticle.this, ArtifactMap.class);
 	        	launchActivity.putExtra("case", DBCase);
 	        	if (argKey != null) {
 	        		launchActivity.putExtra(argKey, name);
