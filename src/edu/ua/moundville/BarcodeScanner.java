@@ -43,6 +43,6 @@ public class BarcodeScanner extends Activity {
 		//Prevents activity screen from appearing on Android.back()
 		finish();
 	}
-	
+	 
 	
 }
