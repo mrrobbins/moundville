@@ -30,7 +30,6 @@ public abstract class Article extends Activity implements DBResult {
 	
 	protected abstract void prepareContent();
 	
-	protected abstract void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey);
 	
 	protected abstract void addFieldToLayout(LinearLayout layout, String text);
 	

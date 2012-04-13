@@ -123,10 +123,4 @@ public class SiteArticle extends Article implements DBResult {
 		prepareContent();
 	}
 
-	@Override
-	protected void addButton(LinearLayout layout, String name, String DBCase,
-			String argKey) {
-		// TODO Auto-generated method stub
-		
-	}
 }

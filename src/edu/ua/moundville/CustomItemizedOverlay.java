@@ -1,4 +1,3 @@
-<<<<<<< OURS
 /***
  * Copyright (c) 2011 readyState Software Ltd
  * 

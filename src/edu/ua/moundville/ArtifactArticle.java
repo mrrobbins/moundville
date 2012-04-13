@@ -75,14 +75,14 @@ public class ArtifactArticle extends Article implements DBResult {
 	private void addArticleFields() {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
 		addFieldToLayout(layout, "Time Period");
-		addButton(layout, timePeriod[1], "5", "timepd");
+		addButton(layout, timePeriod[1], 5, "timepd");
 		addFieldToLayout(layout, "Categories");
-		addOptionalFields(layout, categories, "4", "cat");
+		addOptionalFields(layout, categories, 4, "cat");
 		addFieldToLayout(layout, "Styles");
-		addOptionalFields(layout, tags, "2", "style");
+		addOptionalFields(layout, tags, 2, "style");
 	}
 	
-	private void addOptionalFields(LinearLayout layout, ArrayList<String> fields, String DbCase, String argKey) {
+	private void addOptionalFields(LinearLayout layout, ArrayList<String> fields, Integer DbCase, String argKey) {
 		for (int i=0 ; i < fields.size(); i++) {
 			addButton(layout, fields.get(i), DbCase, argKey);
 		}
@@ -98,7 +98,7 @@ public class ArtifactArticle extends Article implements DBResult {
 		list.add(item);
 	}
 	
-	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
+	protected void addButton(LinearLayout layout, final String name, final Integer DBCase, final String argKey) {
 		Button button = new Button(this);
 		button.setWidth(50);
 		button.setText(name);
