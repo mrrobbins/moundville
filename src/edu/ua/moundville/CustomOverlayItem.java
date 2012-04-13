@@ -15,18 +15,22 @@
 
 package edu.ua.moundville;
 
+import android.content.Context;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.OverlayItem;
 
 public class CustomOverlayItem extends OverlayItem {
 
-	protected String mImageURL;
-	protected String Identifier;
+	private String mImageURL;
+	private String identifier;
+	private Context context;
 	
-	public CustomOverlayItem(GeoPoint point, String title, String snippet, String imageURL, String identifier) {
+	public CustomOverlayItem(Context context, GeoPoint point, String title, String snippet, String mImageURL, String identifier) {
 		super(point, title, snippet);
-		Identifier = identifier;
-		mImageURL = imageURL;
+		this.identifier = identifier;
+		this.mImageURL = mImageURL;
+		this.context = context;
 	}
 
 	public String getImageURL() {
@@ -37,4 +41,11 @@ public class CustomOverlayItem extends OverlayItem {
 		this.mImageURL = imageURL;
 	}
 	
+	public String getID() {
+		return identifier;
+	}
+	
+	public Context getContext() {
+		return context;
+	}
 }
