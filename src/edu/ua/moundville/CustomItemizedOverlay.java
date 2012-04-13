@@ -62,13 +62,18 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 		Toast.makeText(c, "Idenifier for Record " + itemID,
 				Toast.LENGTH_LONG).show();
 		
-		Intent launchActivity;
+		Context outerContext = item.getContext();
+		Intent launchArticle;
 		if (itemID.matches(FORMAT_SITE)) {
-			launchActivity = new Intent(item.getContext(), SiteArticle.class);
-			launchActivity.putExtra("site", itemID.split(":")[1]);
+			
+			launchArticle = new Intent(outerContext, SiteArticle.class);
+			launchArticle.putExtra("site", itemID.split(":")[1]);
+			outerContext.startActivity(launchArticle);
+			
 		} else if (itemID.matches(FORMAT_ARTIFACT)) {
-			launchActivity = new Intent(item.getContext(), ArtifactArticle.class);
-			launchActivity.putExtra("artifact", itemID.split(":")[1]);
+			launchArticle = new Intent(outerContext, ArtifactArticle.class);
+			launchArticle.putExtra("artifact", itemID.split(":")[1]);
+			outerContext.startActivity(launchArticle);
 		} else {
 			//error
 		}

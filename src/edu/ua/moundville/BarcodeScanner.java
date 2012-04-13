@@ -21,21 +21,23 @@ public class BarcodeScanner extends Activity {
     	IntentIntegrator integrator = new IntentIntegrator(BarcodeScanner.this);
     	integrator.initiateScan();
 	}
-	Intent launchActivity;
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 		if (scanResult != null && (scanContent = scanResult.getContents()) != null) {
 			Log.d(TAG, scanContent);
 			
+			Intent launchArticle = null;
 			if (scanContent.matches(BARCODE_FORMAT_ARTIFACT)) {
 				
-				launchActivity.putExtra("artifact",scanContent.substring(10));
-				launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
+				launchArticle = new Intent(getApplicationContext(), ArtifactArticle.class);
+				launchArticle.putExtra("artifact",scanContent.split(":")[1]);
+				startActivity(launchArticle);
 				
 			}
 			else if (scanContent.matches(BARCODE_FORMAT_SITE)){
-				launchActivity.putExtra("site",scanContent.substring(6));
-				launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
+				launchArticle = new Intent(getApplicationContext(), SiteArticle.class);
+				launchArticle.putExtra("site",scanContent.split(":")[1]);
+				startActivity(launchArticle);
 			}
 		} else {
 			Log.d(TAG, "Message is null!");

@@ -44,10 +44,10 @@ public class ListItems extends ListActivity implements DBResult {
 	    	Intent launchActivity;
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	        	if (2 <= DBCase && DBCase <= 5) {
-	            	launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
+	            	launchActivity = new Intent(ListItems.this, ArtifactArticle.class);
 	        		launchActivity.putExtra("artifact", listLinks.get(position));
 	        	} else {
-	            	launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
+	            	launchActivity = new Intent(ListItems.this, SiteArticle.class);
 	        		launchActivity.putExtra("site", listLinks.get(position));
 	        	}
 	            startActivity(launchActivity);
@@ -110,10 +110,6 @@ public class ListItems extends ListActivity implements DBResult {
 		    /* not working */
 	    	default: finish();
 	    }
-	}
-	
-	protected void launchArticle() {
-		
 	}
 	
 	public void receiveResult(JSONArray jArray) {

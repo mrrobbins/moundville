@@ -48,7 +48,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 				
 				record = items.get(i);
 				
-				itemOverlay.addOverlay(new CustomOverlayItem(getApplicationContext(), (new GeoPoint((int) (Double.parseDouble(record.get(3))*1e6),(int) (Double.parseDouble(record.get(4))*1e6))) , record.get(1), record.get(2),record.get(5), record.get(0)));
+				itemOverlay.addOverlay(new CustomOverlayItem(this, (new GeoPoint((int) (Double.parseDouble(record.get(3))*1e6),(int) (Double.parseDouble(record.get(4))*1e6))) , record.get(1), record.get(2),record.get(5), record.get(0)));
 			}
 			
 			mapOverlays.add(itemOverlay);
@@ -74,7 +74,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 					obj = (JSONObject) jArray.get(i);
 					ArrayList<String> record = new ArrayList<String>();
 					
-					record.add("S:"+obj.getString("pk_Site_SiteID"));
+					record.add("site:"+obj.getString("pk_Site_SiteID"));
 					record.add(obj.getString("ak_Site_SiteName"));
 					record.add(obj.getString("Site_Body2"));
 					record.add(obj.getString("Site_Latitude"));
