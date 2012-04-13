@@ -1,6 +1,5 @@
 package edu.ua.moundville;
 
-
 import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
@@ -54,19 +53,14 @@ public class SiteMap extends PlaceMap implements DBResult {
 			
 			mapOverlays.add(itemOverlay);
 		}
-		
-	
 	}
 	
 	private void getSites() {
 		queryArgs.add(new BasicNameValuePair("case","8"));
 		db.sendQuery(this, queryArgs);
-
 	}
 
 	public void receiveResult(JSONArray jArray) {
-		
-		
 		if (jArray == null) {
 			items = null;
 		} else {
