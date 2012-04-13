@@ -12,8 +12,8 @@ public class BarcodeScanner extends Activity {
 	private final static String TAG = "BarcodeScanner";
 	private static IntentResult scanResult = null;
 	private static String scanContent = null;
-	private static final String BARCODE_FORMAT = "[AS]:[0-9]+";
-
+	private static final String BARCODE_FORMAT_SITE = "Site:[0-9]+";
+	private static final String BARCODE_FORMAT_ARTIFACT = "Artifact:[0-9]+";
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -21,13 +21,21 @@ public class BarcodeScanner extends Activity {
     	IntentIntegrator integrator = new IntentIntegrator(BarcodeScanner.this);
     	integrator.initiateScan();
 	}
-	
+	Intent launchActivity;
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
 		if (scanResult != null && (scanContent = scanResult.getContents()) != null) {
 			Log.d(TAG, scanContent);
-			if (validContent(scanContent)) {
+			
+			if (scanContent.matches(BARCODE_FORMAT_ARTIFACT)) {
 				
+				launchActivity.putExtra("artifact",scanContent.substring(10));
+				launchActivity = new Intent(getApplicationContext(), ArtifactArticle.class);
+				
+			}
+			else if (scanContent.matches(BARCODE_FORMAT_SITE)){
+				launchActivity.putExtra("site",scanContent.substring(6));
+				launchActivity = new Intent(getApplicationContext(), SiteArticle.class);
 			}
 		} else {
 			Log.d(TAG, "Message is null!");
@@ -36,7 +44,5 @@ public class BarcodeScanner extends Activity {
 		finish();
 	}
 	
-	private boolean validContent(String scanContent) {
-		return scanContent.matches(BARCODE_FORMAT); 
-	}
+	
 }
