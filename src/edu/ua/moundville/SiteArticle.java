@@ -26,7 +26,7 @@ import edu.ua.moundville.DBHandler.DBResult;
 
 public class SiteArticle extends Article implements DBResult {
 	
-	private static final String TAG = "ArtifactArticle";
+	private static final String TAG = "SiteArticle";
 	private String siteID = "";
 	private String siteTitle = "";
 	private String siteBody = "";
@@ -67,10 +67,10 @@ public class SiteArticle extends Article implements DBResult {
 	
 	private void addSiteFields() {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
-		addButton(layout, "View map of " + siteTitle + " artifacts", "3", "site");
+		addButton(layout, "View map of " + siteTitle + " artifacts", "3", "site", siteID);
 	}
 	
-	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
+	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey, final String argValue) {
 		Button button = new Button(this);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
@@ -80,7 +80,7 @@ public class SiteArticle extends Article implements DBResult {
 	        	launchActivity = new Intent(SiteArticle.this, ArtifactMap.class);
 	        	launchActivity.putExtra("case", DBCase);
 	        	if (argKey != null) {
-	        		launchActivity.putExtra(argKey, name);
+	        		launchActivity.putExtra(argKey, argValue);
 	        	}
 	        	
 	        	startActivity(launchActivity);
@@ -121,5 +121,12 @@ public class SiteArticle extends Article implements DBResult {
 		}
 		
 		prepareContent();
+	}
+
+	@Override
+	protected void addButton(LinearLayout layout, String name, String DBCase,
+			String argKey) {
+		// TODO Auto-generated method stub
+		
 	}
 }

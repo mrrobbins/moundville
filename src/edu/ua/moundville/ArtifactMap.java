@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 
@@ -40,7 +41,7 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 	protected void populateMap() {
 		
 		/* check or app will crash */
-		if (items == null || items.size() != 0) {
+		if (items != null && items.size() != 0) {
 			
 			for (int i=0; i<items.size(); i++) {
 				ArrayList<String> record = new ArrayList<String>();
@@ -71,33 +72,38 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 	}
 
 	public void receiveResult(JSONArray jArray) {
-		if (jArray == null) {
-			items = null;
-		} else {
+		try {
+			if (jArray == null) {
+				items = null;
+			}
+			else if (((JSONObject)jArray.get(0)).getString("pk_Art_ArtID").equals("null")) {
+				Toast.makeText(this, "No artifacts for this site", Toast.LENGTH_LONG).show();	
+				finish();
+			}
 
-			Log.d(TAG, jArray.toString());
-			
-			for (int i=0; i<jArray.length(); i++) {
-				JSONObject obj = null;
-				
-				try {
+			else {
+				Log.d(TAG, jArray.toString());
+
+				for (int i=0; i<jArray.length(); i++) {
+					JSONObject obj = null;
+
 					obj = (JSONObject) jArray.get(i);
 					ArrayList<String> record = new ArrayList<String>();
-					
-					record.add("article:"+obj.getString("pk_Art_ArtID"));
+
+					record.add("artifact:"+obj.getString("pk_Art_ArtID"));
 					record.add(obj.getString("ak_Art_Title"));
 					record.add(obj.getString("Art_Body2"));
 					record.add(obj.getString("Art_Latitude"));
 					record.add(obj.getString("Art_Longitude"));
 					record.add(obj.getString("Img_ImageThumb"));
-					
+
 					items.add(record);
 
-				} catch (JSONException e) {
-					
-					e.printStackTrace();
 				}
 			}
+		} catch (JSONException e) {
+
+			e.printStackTrace();
 		}
 		populateMap();
 	}
