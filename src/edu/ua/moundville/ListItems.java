@@ -130,7 +130,7 @@ public class ListItems extends ListActivity implements DBResult {
 					switch (DBCase) {
 					case 2:
 						listItems.add(obj.getString("ak_Tag_Name"));
-						listLinks.add(obj.getString("pk_Tag_Name"));
+						listLinks.add(obj.getString("ak_Tag_Name"));
 						break;
 					case 3: 
 						listItems.add(obj.getString("ak_Art_Title"));
@@ -138,11 +138,11 @@ public class ListItems extends ListActivity implements DBResult {
 						break;
 					case 4: 
 						listItems.add(obj.getString("ak_Cat_Name"));
-						listLinks.add(obj.getString("pk_Cat_Name"));
+						listLinks.add(obj.getString("ak_Cat_Name"));
 						break;
 					case 5:
 						listItems.add(obj.getString("ak_Time_TimePeriod"));
-						listLinks.add(obj.getString("pk_Time_TimePeriod"));
+						listLinks.add(obj.getString("ak_Time_TimePeriod"));
 						break;
 					case 8:
 						listItems.add(obj.getString("ak_Site_SiteName"));
