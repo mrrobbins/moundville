@@ -34,14 +34,14 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	protected final ArrayList<String> listLinks = new ArrayList<String>();
 	protected static DBHandler db = new DBHandler();
 	private static final String TAG = "ProximityList";
-
+	private LocationManager locationManager;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setTitle("Explore Nearby");
 	    
-	    LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+	    locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 	    location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 	    if (location == null) {
 	    	location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -122,5 +122,15 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	
 	private void prepareList() {
 	    setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listText));
+	}
+	protected void onPause() {
+		super.onPause();
+		locationManager.removeUpdates(this);
+	}
+	
+	protected void onResume() {
+		super.onResume();
+	    locationManager.requestLocationUpdates(
+	    		LocationManager.GPS_PROVIDER, MIN_UPDATE_TIME, MIN_UPDATE_DISTANCE, this);
 	}
 }

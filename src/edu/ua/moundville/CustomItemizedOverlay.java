@@ -59,8 +59,6 @@ public class CustomItemizedOverlay<Item extends OverlayItem> extends BalloonItem
 	@Override
 	protected boolean onBalloonTap(int index, CustomOverlayItem item) {
 		final String itemID = item.getID();
-		Toast.makeText(c, "Idenifier for Record " + itemID,
-				Toast.LENGTH_LONG).show();
 		
 		Context outerContext = item.getContext();
 		Intent launchArticle;
