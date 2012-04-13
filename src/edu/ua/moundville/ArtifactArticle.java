@@ -129,6 +129,7 @@ public class ArtifactArticle extends Activity implements DBResult {
 	
 	private void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey) {
 		Button button = new Button(this);
+		button.setWidth(50);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
