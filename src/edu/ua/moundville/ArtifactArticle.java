@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -105,7 +106,7 @@ public class ArtifactArticle extends Article implements DBResult {
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Intent launchActivity;
-	        	launchActivity = new Intent(getApplicationContext(), ListItems.class);
+	        	launchActivity = new Intent(v.getContext(), ListItems.class);
 	        	launchActivity.putExtra("case", DBCase);
 	        	if (argKey != null) {
 	        		launchActivity.putExtra(argKey, name);

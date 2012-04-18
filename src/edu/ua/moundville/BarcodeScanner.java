@@ -29,7 +29,7 @@ public class BarcodeScanner extends Activity {
 			Intent launchArticle = null;
 			if (scanContent.matches(BARCODE_FORMAT_ARTIFACT)) {
 				
-				launchArticle = new Intent(getApplicationContext(), ArtifactArticle.class);
+				launchArticle = new Intent(this, ArtifactArticle.class);
 				launchArticle.putExtra("artifact",scanContent.split(":")[1]);
 				startActivity(launchArticle);
 				
@@ -37,8 +37,8 @@ public class BarcodeScanner extends Activity {
 			else if (scanContent.matches(BARCODE_FORMAT_SITE)){
 
 
-				launchArticle = new Intent(getApplicationContext(), SiteArticle.class);
-				launchArticle = new Intent(getApplicationContext(), SiteArticle.class);
+				launchArticle = new Intent(this, SiteArticle.class);
+				launchArticle = new Intent(this, SiteArticle.class);
 				launchArticle.putExtra("site",scanContent.split(":")[1]);
 				startActivity(launchArticle);
 			}
