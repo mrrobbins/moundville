@@ -12,6 +12,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -62,6 +65,27 @@ public abstract class Article extends Activity implements DBResult {
 		}
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.default_menu, menu);
+	    return true;
+	}    
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.home:
+	            // app icon in action bar clicked; go home
+	            Intent intent = new Intent(this, MoundvilleActivity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}    
+	
 	protected abstract void addFieldToLayout(LinearLayout layout, String text);
 	
 	protected class FetchImageTask extends AsyncTask<String, Integer, Bitmap> {
@@ -69,7 +93,7 @@ public abstract class Article extends Activity implements DBResult {
 	    protected Bitmap doInBackground(String... arg0) {
 	    	Bitmap b = null;
 	    	try {
-				 b = BitmapFactory.decodeStream((InputStream) new URL(arg0[0]).getContent());
+				 b = BitmapFactory.decodeStream((InputStream)new URL(arg0[0]).getContent());
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

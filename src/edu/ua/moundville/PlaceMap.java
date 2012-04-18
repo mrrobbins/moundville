@@ -2,10 +2,14 @@ package edu.ua.moundville;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -128,7 +132,27 @@ public abstract class PlaceMap extends MapActivity {
     	return meterDistance <= distance ? true : false;
     }
     
-
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.default_menu, menu);
+	    return true;
+	}    
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.home:
+	            // app icon in action bar clicked; go home
+	            Intent intent = new Intent(this, MoundvilleActivity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}    
+    
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
