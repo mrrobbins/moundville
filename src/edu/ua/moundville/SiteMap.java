@@ -42,7 +42,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 	protected void populateMap() {
 		
 		/* check or app will crash */
-		if (items.size() != 0) {
+		if (items != null && items.size() != 0) {
 			
 			for (int i=0; i<items.size(); i++) {
 				ArrayList<String> record = new ArrayList<String>();
