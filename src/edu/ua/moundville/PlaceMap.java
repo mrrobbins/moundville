@@ -46,7 +46,7 @@ public abstract class PlaceMap extends MapActivity {
         mapView = (MapView) findViewById(R.id.mapview);
         /* 	Then get the ZoomControls from the MapView */
         mapView.setBuiltInZoomControls(true);
-        mapView.setSatellite(true);
+        mapView.setSatellite(false);
         mapView.setSaveEnabled(true);
         mapView.setWillNotCacheDrawing(false);
         
@@ -101,7 +101,7 @@ public abstract class PlaceMap extends MapActivity {
         	}
         });
         
-        toggleSatellite.setChecked(true);
+        toggleSatellite.setChecked(false);
         toggleSatellite.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
         		if (toggleSatellite.isChecked()) {
