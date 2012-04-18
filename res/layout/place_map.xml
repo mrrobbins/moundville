@@ -3,8 +3,8 @@
     android:id="@+id/place_map"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-
+    android:layout_height="fill_parent"
+    style="@style/map" >    
     <com.google.android.maps.MapView
         android:id="@+id/mapview"
         android:layout_width="fill_parent"
@@ -15,19 +15,21 @@
 
     <ToggleButton
         android:id="@+id/toggle_location"
+        android:alpha="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
+        style="@style/map"
         android:layout_marginTop="15dp"
-   		style="@android:style/TextAppearance.Medium"
         android:text="@string/toggle_location"
         android:textOff="Location"
         android:textOn="Location" />
 
     <ToggleButton
         android:id="@+id/toggle_satellite"
+        android:alpha="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -35,9 +37,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:alpha=".8"
         android:text="@string/toggle_satellite"
-   		style="@android:style/TextAppearance.Medium"
+        style="@style/map"
         android:textOff="Satellite"
         android:textOn="Satellite" />
 

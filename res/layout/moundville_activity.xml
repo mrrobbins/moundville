@@ -4,8 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#3A2417" >
-    
+    android:background="#3A2417">
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="100dp"
@@ -37,6 +36,7 @@
             <Button
                 android:id="@+id/launch_map"
                 android:background="@layout/button_selector"
+                style="@style/home_screen"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -54,6 +54,7 @@
             <Button
                 android:id="@+id/launch_proximity_list"
                 android:background="@layout/button_selector"
+                style="@style/home_screen"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,6 +73,7 @@
                 android:id="@+id/launch_barcode_scanner"
                 android:background="@layout/button_selector"
                 android:layout_width="fill_parent"
+                style="@style/home_screen"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="buttonHandler"
@@ -89,6 +91,7 @@
                 android:id="@+id/launch_about_info"
                 android:background="@layout/button_selector"
                 android:layout_width="wrap_content"
+                style="@style/home_screen"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:onClick="buttonHandler"

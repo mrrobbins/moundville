@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="map" parent="android:Theme.Holo.Light" >
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="home_screen" parent="android:Theme.Holo.Light.NoActionBar" >
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
