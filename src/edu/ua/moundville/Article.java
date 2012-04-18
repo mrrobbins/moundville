@@ -4,13 +4,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import edu.ua.moundville.DBHandler.DBResult;
@@ -38,13 +41,24 @@ public abstract class Article extends Activity implements DBResult {
 			primaryImage.setVisibility(View.GONE);	
 		} else {
 			primaryImage = (ImageView)findViewById(R.id.primary_image);
-			new FetchImageTask() { 
-				protected void onPostExecute(Bitmap result) {
-					if (result != null) {
-						primaryImage.setImageBitmap(result);
+			final FetchImageTask imageFetcher = new FetchImageTask();
+			imageFetcher.execute(URL + "/" + primaryImageSubUrl);
+			
+			primaryImage.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					Intent launchActivity = new Intent(v.getContext(), ImageViewer.class);
+					try {
+						launchActivity.putExtra("image",imageFetcher.get());
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
+					startActivity(launchActivity);
 				}
-			}.execute(URL + "/" + primaryImageSubUrl);
+			});
 		}
 	}
 	
@@ -63,5 +77,10 @@ public abstract class Article extends Activity implements DBResult {
 			} 
 	        return b;
 	    }	
+	    protected void onPostExecute(Bitmap result) {
+	    	if (result != null) {
+	    		primaryImage.setImageBitmap(result);
+	    	}
+	    }
 	}
 }

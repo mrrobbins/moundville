@@ -32,6 +32,9 @@
         <activity android:name="SiteMap"></activity>
         <activity android:name="SiteArticle"></activity>
         <activity android:name="ArtifactArticle"></activity>
+        <activity android:name="ImageViewer"
+        	android:theme="@style/image_viewer" >
+        </activity>
     </application>
 
 </manifest>
