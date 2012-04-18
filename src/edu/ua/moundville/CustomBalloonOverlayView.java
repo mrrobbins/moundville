@@ -24,6 +24,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		
 		// map our custom item data to fields
 		title.setText(item.getTitle());
-		snippet.setText(item.getSnippet());
+		snippet.setText(  Html.fromHtml(item.getSnippet()));
 		
 		// get remote image from network.
 		// bitmap results would normally be cached, but this is good enough for demo purpose.
