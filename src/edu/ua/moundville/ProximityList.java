@@ -60,7 +60,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	    	Intent launchActivity;
 	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 	        	Log.d(TAG, "Clicked position: " + position + " listLinks size: " + String.valueOf(listLinks.size()));
-	        	launchActivity = new Intent(this, ArtifactArticle.class);
+	        	launchActivity = new Intent(view.getContext(), ArtifactArticle.class);
 	        	launchActivity.putExtra("artifact", listLinks.get(position));
 	        	startActivity(launchActivity);
 	        }
