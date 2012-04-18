@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.ua.moundville.DBHandler.DBResult;
 
 public class ArtifactArticle extends Article implements DBResult {
@@ -60,15 +61,7 @@ public class ArtifactArticle extends Article implements DBResult {
 		articleBody.setTextSize(20);
 		articleBody.setText(formatedText.toString());
 		
-		primaryImage = (ImageView)findViewById(R.id.primary_image);
-		new FetchImageTask() { 
-	        protected void onPostExecute(Bitmap result) {
-	            if (result != null) {
-	            	primaryImage.setImageBitmap(result);
-	            }
-	        }
-	    }.execute(URL + "/" + primaryImageSubUrl);
-	    
+		displayImage();
 	    
 	    addArticleFields();
 	}
