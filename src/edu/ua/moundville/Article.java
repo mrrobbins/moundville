@@ -1,7 +1,11 @@
 package edu.ua.moundville;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
@@ -50,15 +54,7 @@ public abstract class Article extends Activity implements DBResult {
 			primaryImage.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
 					Intent launchActivity = new Intent(v.getContext(), ImageViewer.class);
-					try {
-						launchActivity.putExtra("image",imageFetcher.get());
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (ExecutionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					launchActivity.putExtra("image",imageFetcher.imageFile);
 					startActivity(launchActivity);
 				}
 			});
@@ -89,11 +85,28 @@ public abstract class Article extends Activity implements DBResult {
 	protected abstract void addFieldToLayout(LinearLayout layout, String text);
 	
 	protected class FetchImageTask extends AsyncTask<String, Integer, Bitmap> {
+		public String imageFile;
 	    @Override
 	    protected Bitmap doInBackground(String... arg0) {
 	    	Bitmap b = null;
 	    	try {
-				 b = BitmapFactory.decodeStream((InputStream)new URL(arg0[0]).getContent());
+				 File temp = File.createTempFile("image", "", getFilesDir());
+				 imageFile = temp.getAbsolutePath();
+				 
+				 OutputStream out = new FileOutputStream(temp);
+				 InputStream in = new URL(arg0[0]).openStream();
+				 
+				 byte[] buffer = new byte[1024];
+				 int length;
+				 while ((length = in.read(buffer)) > 0){
+					 out.write(buffer, 0, length);
+				 }
+				 
+				 in.close();
+				 out.close();
+				 
+				 b = BitmapFactory.decodeFile(imageFile);
+				 
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
