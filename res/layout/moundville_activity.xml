@@ -36,6 +36,7 @@
 
             <Button
                 android:id="@+id/launch_map"
+                android:background="@layout/button_selector"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -52,6 +53,7 @@
 
             <Button
                 android:id="@+id/launch_proximity_list"
+                android:background="@layout/button_selector"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -68,6 +70,7 @@
 
             <Button
                 android:id="@+id/launch_barcode_scanner"
+                android:background="@layout/button_selector"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -81,6 +84,23 @@
                 android:layout_height="0dp"
                 android:layout_width="fill_parent"
                 android:layout_weight="2" />
+            
+            <Button
+                android:id="@+id/launch_about_info"
+                android:background="@layout/button_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="buttonHandler"
+                android:padding="10dp"
+                android:text="@string/info" 
+                android:textSize="15dp"/>
+            
+            
+            <ImageView
+                android:layout_height="0dp"
+                android:layout_width="fill_parent"
+                android:layout_weight="1" />
             
         </LinearLayout>
         

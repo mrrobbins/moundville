@@ -2,14 +2,14 @@ package edu.ua.moundville;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-
 public class MoundvilleActivity extends Activity {
-	private final String TAG = "MoundvilleActivity";
+	private static final String TAG = "MoundvilleActivity";
+	private static final String MOUNDVILLE_WEBSITE = "http://moundville.ua.edu/";
 	
     /** Called when the activity is first created. */
     @Override
@@ -31,6 +31,9 @@ public class MoundvilleActivity extends Activity {
     		Log.d(TAG, "Clicked barcode_scanner");
     		Intent launchBarcodeScanner = new Intent(this, BarcodeScanner.class);
     		startActivity(launchBarcodeScanner);
+    	} else if (view == findViewById(R.id.launch_about_info)) {
+    		Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(MOUNDVILLE_WEBSITE));
+    		startActivity(myIntent);
     	}
     }
-}
+} 
