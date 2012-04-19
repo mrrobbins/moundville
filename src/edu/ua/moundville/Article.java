@@ -27,7 +27,7 @@ import edu.ua.moundville.DBHandler.DBResult;
 
 public abstract class Article extends Activity implements DBResult {
 
-	protected final String URL = "http://betatesting.as.ua.edu/mapexperience/images";
+	protected final String URL = "http://betatesting.as.ua.edu/mapexperience/images/";
 	protected String primaryImageSubUrl;
 	protected ImageView primaryImage;
 	protected DBHandler db = new DBHandler();
@@ -49,7 +49,7 @@ public abstract class Article extends Activity implements DBResult {
 		} else {
 			primaryImage = (ImageView)findViewById(R.id.primary_image);
 			final FetchImageTask imageFetcher = new FetchImageTask();
-			imageFetcher.execute(URL + "/" + primaryImageSubUrl);
+			imageFetcher.execute(URL + primaryImageSubUrl);
 			
 			primaryImage.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {

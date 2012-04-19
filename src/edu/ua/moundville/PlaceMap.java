@@ -26,7 +26,7 @@ import com.google.android.maps.OverlayItem;
 
 public abstract class PlaceMap extends MapActivity {
 
-	protected final String URL = "http://betatesting.as.ua.edu/mapexperience/images";
+	protected final String URL = "http://betatesting.as.ua.edu/mapexperience/images/";
 	protected final static String TAG = "PlaceMap";
     protected final MapActivity mapActivity = this;
     protected final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
