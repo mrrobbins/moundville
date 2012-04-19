@@ -20,7 +20,8 @@
             android:id="@+id/article_body"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp" />
+            android:paddingBottom="20dp" 
+            android:background="@android:color/black"/>
         
 </LinearLayout>
 

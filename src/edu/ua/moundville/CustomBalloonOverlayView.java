@@ -65,11 +65,11 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		
 		// map our custom item data to fields
 		title.setText(item.getTitle());
-		snippet.setText(  Html.fromHtml(item.getSnippet()));
+		snippet.setText(Html.fromHtml(item.getSnippet()));
 		
 		// get remote image from network.
 		// bitmap results would normally be cached, but this is good enough for demo purpose.
-		image.setImageResource(R.drawable.icon);
+//		image.setImageResource(R.drawable.icon);
 		new FetchImageTask() { 
 	        protected void onPostExecute(Bitmap result) {
 	            if (result != null) {
@@ -94,5 +94,4 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 	        return b;
 	    }	
 	}
-	
 }
