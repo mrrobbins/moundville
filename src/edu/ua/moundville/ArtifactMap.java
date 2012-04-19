@@ -53,7 +53,7 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 						(new GeoPoint((int) (Double.parseDouble(record.get(3))*1e6),(int) (Double.parseDouble(record.get(4))*1e6))), 
 						record.get(1), 
 						record.get(2),
-						record.get(5),
+						URL + record.get(5),
 						record.get(0)));
 			}
 			
