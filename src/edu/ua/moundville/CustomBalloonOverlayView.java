@@ -30,9 +30,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.maps.OverlayItem;
-import com.readystatesoftware.mapviewballoons.*;
+import com.readystatesoftware.mapviewballoons.BalloonOverlayView;
 
 public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonOverlayView<CustomOverlayItem> {
 
@@ -77,6 +78,7 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 	            }
 	        }
 	    }.execute(item.getImageURL());
+		Toast.makeText(parent.getContext(), item.getImageURL(), Toast.LENGTH_LONG).show();	
 		
 	}
 
