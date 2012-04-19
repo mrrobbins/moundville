@@ -118,6 +118,10 @@ public abstract class PlaceMap extends MapActivity {
     
     abstract protected void populateMap();
     
+    protected void redrawMap() {
+    	mapView.invalidate();
+    }
+    
     protected static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
     	Location location1 = new Location("MyLocationOverlay");
     	location1.setLatitude(point1.getLatitudeE6() / 1E6);

@@ -59,6 +59,8 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 			
 			mapOverlays.add(itemOverlay);
 		}
+		
+		redrawMap();
 	}
 	
 	private void getArtifacts() {

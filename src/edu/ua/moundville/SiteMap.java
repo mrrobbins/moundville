@@ -54,6 +54,8 @@ public class SiteMap extends PlaceMap implements DBResult {
 			
 			mapOverlays.add(itemOverlay);
 		}
+		
+		redrawMap();
 	}
 	
 	private void getSites() {

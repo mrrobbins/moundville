@@ -93,8 +93,7 @@ public class ArtifactArticle extends Article implements DBResult {
 	}
 	
 	protected void addButton(LinearLayout layout, final String name, final Integer DBCase, final String argKey) {
-		Button button = new Button(this);
-		button.setWidth(50);
+		Button button = (Button) getLayoutInflater().inflate(R.layout.article_button, null);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
