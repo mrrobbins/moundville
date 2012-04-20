@@ -70,11 +70,13 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		
 		// get remote image from network.
 		// bitmap results would normally be cached, but this is good enough for demo purpose.
-//		image.setImageResource(R.drawable.icon);
 		new FetchImageTask() { 
 	        protected void onPostExecute(Bitmap result) {
 	            if (result != null) {
 	            	image.setImageBitmap(result);
+	            }
+	            else {
+	            	image.setVisibility(GONE);
 	            }
 	        }
 	    }.execute(item.getImageURL());

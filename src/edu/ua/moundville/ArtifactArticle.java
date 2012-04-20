@@ -93,6 +93,8 @@ public class ArtifactArticle extends Article implements DBResult {
 	}
 	
 	protected void addButton(LinearLayout layout, final String name, final Integer DBCase, final String argKey) {
+		if ( !(name.matches("^(null)?$"))||name != null ) {
+			
 		Button button = (Button) getLayoutInflater().inflate(R.layout.article_button, null);
 		button.setText(name);
 		button.setOnClickListener(new OnClickListener() {
@@ -108,6 +110,7 @@ public class ArtifactArticle extends Article implements DBResult {
 			}
 		});
 		layout.addView(button);
+		}
 	}
 	
 	protected void addFieldToLayout(LinearLayout layout, String text) {
