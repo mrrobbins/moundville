@@ -29,8 +29,8 @@
         <activity android:name="BarcodeScanner"></activity>
         <activity android:name="ListItems"></activity>
         <activity android:name="ArtifactMap"></activity>
-        <activity android:name="SiteMap"></activity>
         <activity android:name="SiteArticle"></activity>
+        <activity android:name="SiteMap"></activity>
         <activity android:name="ArtifactArticle"></activity>
         <activity android:name="ImageViewer"
         	android:theme="@style/image_viewer" >

@@ -9,14 +9,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.integer;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
-
-import com.readystatesoftware.mapviewballoons.*;
 
 import edu.ua.moundville.DBHandler.DBResult;
 
