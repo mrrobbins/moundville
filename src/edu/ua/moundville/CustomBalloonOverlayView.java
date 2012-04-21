@@ -25,6 +25,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,18 +68,26 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		// map our custom item data to fields
 		title.setText(item.getTitle());
 		snippet.setText(Html.fromHtml(item.getSnippet()));
-		
+		if( item.getSnippet().matches("^(null)?$")){
+			snippet.setVisibility(GONE);
+		}
+		else{
+			snippet.setVisibility(VISIBLE);
+		}
 		// get remote image from network.
 		// bitmap results would normally be cached, but this is good enough for demo purpose.
 //		image.setImageResource(R.drawable.icon);
 		new FetchImageTask() { 
 	        protected void onPostExecute(Bitmap result) {
 	            if (result != null) {
+	            	image.setVisibility(VISIBLE);
 	            	image.setImageBitmap(result);
+	            }
+	            else{
+	            	image.setVisibility(GONE);
 	            }
 	        }
 	    }.execute(item.getImageURL());
-		Toast.makeText(parent.getContext(), item.getImageURL(), Toast.LENGTH_LONG).show();	
 		
 	}
 

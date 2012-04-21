@@ -70,9 +70,13 @@ public class ArtifactArticle extends Article implements DBResult {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
 		addFieldToLayout(layout, "Time Period");
 		addButton(layout, timePeriod[1], 5, "timepd");
+		if(categories.size() != 0){
 		addFieldToLayout(layout, "Categories");
+		}
 		addOptionalFields(layout, categories, 4, "cat");
+		if(tags.size() !=0){
 		addFieldToLayout(layout, "Styles");
+		}
 		addOptionalFields(layout, tags, 2, "style");
 	}
 	
@@ -130,15 +134,23 @@ public class ArtifactArticle extends Article implements DBResult {
 					obj = (JSONObject) jArray.get(i);
 					
 					artifactTitle = obj.getString("ak_Art_Title");
-					artifactBody = obj.getString("Art_Body");
+					if(obj.getString("Art_Body").matches("^(null)?$")){
+						artifactBody = "";
+					}
+					else{
+						artifactBody = obj.getString("Art_Body");
+					}
 					timePeriod[0] = obj.getString("pk_Time_TimeID");
 					timePeriod[1] = obj.getString("ak_Time_TimePeriod");
 					
 					primaryImageSubUrl = obj.getString("Img_Image");
 					
+					if(!obj.getString("ak_Cat_Name").matches("^(null)?$")){
 					addToArrayList(categories, obj.getString("ak_Cat_Name"));
+					}
+					if(!obj.getString("ak_Tag_Name").matches("^(null)?$")){
 					addToArrayList(tags, obj.getString("ak_Tag_Name"));
-					
+					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

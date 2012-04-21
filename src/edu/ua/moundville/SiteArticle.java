@@ -103,7 +103,13 @@ public class SiteArticle extends Article implements DBResult {
 					obj = (JSONObject) jArray.get(i);
 					
 					siteTitle = obj.getString("ak_Site_SiteName");
-					siteBody = obj.getString("Site_Body");
+					
+					if(obj.getString("Site_Body").matches("^(null)?$")){
+						siteBody = "";
+					}
+					else{
+						siteBody = obj.getString("Site_Body");
+					}
 					
 					primaryImageSubUrl = obj.getString("Img_Image");
 					
