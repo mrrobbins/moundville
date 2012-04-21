@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import edu.ua.moundville.DBHandler.DBResult;
@@ -143,7 +144,8 @@ public class ListItems extends ListActivity implements DBResult {
 	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		
 		if (jArray == null) {
-			listItems.add("Error retrieving data...");
+			Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG);
+			finish();
 		} else {
 			Log.d(TAG, jArray.toString());
 

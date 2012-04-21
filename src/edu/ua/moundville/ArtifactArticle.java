@@ -124,7 +124,8 @@ public class ArtifactArticle extends Article implements DBResult {
 
 	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		if (jArray == null) {
-			//Handle Failure
+			Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG).show();
+			finish();
 		} else {
 			Log.d(TAG, jArray.toString());
 

@@ -76,7 +76,8 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		try {
 			if (jArray == null) {
-				items = null;
+				Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG).show();
+				finish();
 			}
 			else if (((JSONObject)jArray.get(0)).getString("pk_Art_ArtID").equals("null")) {
 				Toast.makeText(this, "No artifacts for this site", Toast.LENGTH_LONG).show();	

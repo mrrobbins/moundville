@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 
@@ -62,7 +63,8 @@ public class SiteMap extends PlaceMap implements DBResult {
 
 	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		if (jArray == null) {
-			items = null;
+			Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG).show();
+			finish();
 		} else {
 
 			Log.d(TAG, jArray.toString());

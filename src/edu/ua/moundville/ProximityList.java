@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 import edu.ua.moundville.DBHandler.DBResult;
 
 public class ProximityList extends ListActivity implements DBResult, LocationListener {
@@ -99,7 +100,8 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 
 	public void receiveResult(JSONArray jArray,ArrayList<NameValuePair> params) {
 		if (jArray == null) {
-			listText.add("I failed :(");
+			Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG).show();
+			finish();
 		} else {
 			Log.d(TAG, jArray.toString());
 
