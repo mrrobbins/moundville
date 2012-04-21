@@ -122,7 +122,7 @@ public class ArtifactArticle extends Article implements DBResult {
 		layout.addView(textView);
 	}
 
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		if (jArray == null) {
 			//Handle Failure
 		} else {

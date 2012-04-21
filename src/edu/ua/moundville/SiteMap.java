@@ -60,7 +60,7 @@ public class SiteMap extends PlaceMap implements DBResult {
 		db.sendQuery(this, queryArgs);
 	}
 
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		if (jArray == null) {
 			items = null;
 		} else {
