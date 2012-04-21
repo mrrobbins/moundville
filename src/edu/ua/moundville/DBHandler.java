@@ -33,7 +33,8 @@ public class DBHandler {
 	("case", 5) ("timepd", time_period) - List Artifacts with time_period tag (string)
 	("case", 6) ("art", Artifact_ID) - Record of Artifact with Artifact_ID (int)
 	("case", 7) ("site", Site_ID) - Record of Site with Site_ID (int)
-	("case", 8) - List all Sites */
+	("case", 8) - List all Sites 
+	("case", 9) ("site", Site_ID) - Counts number of Artifacts associated with Site ID*/
 	public void sendQuery(Activity activity, ArrayList<NameValuePair> params) {
 		NetworkHelper nHelper = new NetworkHelper(activity, params);
 		(new Thread(nHelper)).start();
@@ -94,13 +95,13 @@ public class DBHandler {
 				
 				public void run() {
 					/* TODO: Unsafe cast, must restrict to implements DBResult */
-					((DBResult) activity).receiveResult(jArray2);
+					((DBResult) activity).receiveResult(jArray2, params);
 				}
 			});
 		}
 	}
 	
 	public static interface DBResult {
-		void receiveResult(JSONArray jArray);
+		void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params);
 	}
 }

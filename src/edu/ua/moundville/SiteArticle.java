@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -33,6 +34,9 @@ public class SiteArticle extends Article implements DBResult {
 	private String siteBody = "";
 	protected ArrayList<NameValuePair> queryArgs = new ArrayList<NameValuePair>();
 
+	protected ArrayList<NameValuePair> queryArgs2 = new ArrayList<NameValuePair>();
+	protected DBHandler db2 = new DBHandler();
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,12 @@ public class SiteArticle extends Article implements DBResult {
 	    siteID = getIntent().getExtras().getString("site");
 	    queryArgs.add(new BasicNameValuePair("site", siteID));
 	    db.sendQuery(this, queryArgs);
+	    
+	    queryArgs2.add(new BasicNameValuePair("case", "9"));
+	    queryArgs2.add(new BasicNameValuePair("site", siteID));
+	    
+	    db2.sendQuery( this, queryArgs2);
+		
 	}
 	
 	protected void prepareContent() {
@@ -56,12 +66,25 @@ public class SiteArticle extends Article implements DBResult {
 		
 		displayImage();
 		
-	    addSiteFields();
 	}
 	
 	private void addSiteFields() {
 		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
-		addButton(layout, "View map of " + siteTitle + " artifacts", "3", "site", siteID);
+		addButton(layout, "View map of artifacts", "3", "site", siteID);
+	}
+	
+	private void addToastButton(){
+		Button button = new Button(this);
+		button.setText("View map of artifacts");
+		button.setOnClickListener(new OnClickListener(){
+			
+			public void onClick(View v){
+				Toast.makeText(SiteArticle.this, "No artifacts for this site", Toast.LENGTH_LONG).show();	
+			}
+		});
+
+		LinearLayout layout = (LinearLayout) findViewById(R.id.article_linear_layout);
+		layout.addView(button);
 	}
 	
 	protected void addButton(LinearLayout layout, final String name, final String DBCase, final String argKey, final String argValue) {
@@ -91,10 +114,11 @@ public class SiteArticle extends Article implements DBResult {
 		layout.addView(textView);
 	}
 
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		if (jArray == null) {
 			//Handle Failure
 		} else {
+			if(params.get(0).getValue().equals("7")){
 			Log.d(TAG, jArray.toString());
 
 			for (int i=0; i<jArray.length(); i++) {
@@ -117,6 +141,23 @@ public class SiteArticle extends Article implements DBResult {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			}
+			}
+			else if (params.get(0).getValue().equals("9")){
+				try{
+					JSONObject obj = (JSONObject) jArray.getJSONObject(0);
+					if(obj.getString("COUNT(*)").equals("0")){
+						addToastButton();
+					}
+					else{
+						addSiteFields();
+					}
+						
+				}
+				catch (JSONException e){
+					e.printStackTrace();
+				}
+				
 			}
 		}
 		

@@ -73,7 +73,7 @@ public class ArtifactMap extends PlaceMap implements DBResult {
 	    db.sendQuery(this, queryArgs);
 	}
 
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		try {
 			if (jArray == null) {
 				items = null;

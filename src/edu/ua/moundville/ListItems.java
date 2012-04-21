@@ -136,7 +136,7 @@ public class ListItems extends ListActivity implements DBResult {
 	    }
 	}
 	
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray, ArrayList<NameValuePair> params) {
 		
 		if (jArray == null) {
 			listItems.add("I failed :(");

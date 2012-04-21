@@ -97,7 +97,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 		
 	}
 
-	public void receiveResult(JSONArray jArray) {
+	public void receiveResult(JSONArray jArray,ArrayList<NameValuePair> params) {
 		if (jArray == null) {
 			listText.add("I failed :(");
 		} else {
