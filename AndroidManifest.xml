@@ -8,6 +8,11 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     
+	<instrumentation android:name="android.test.InstrumentationTestRunner"
+    	android:targetPackage="edu.ua.moundville"
+    	android:label="your tests label" />	
+	<uses-library android:name="android.test.runner" />    
+    
     <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="15" />
 
     <application

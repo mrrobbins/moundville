@@ -124,7 +124,7 @@ public abstract class PlaceMap extends MapActivity {
     	mapView.invalidate();
     }
     
-    protected static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
+    public static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
     	Location location1 = new Location("MyLocationOverlay");
     	location1.setLatitude(point1.getLatitudeE6() / 1E6);
     	location1.setLongitude(point1.getLongitudeE6() / 1E6);
@@ -162,6 +162,10 @@ public abstract class PlaceMap extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {
 		return false;
+	}
+	
+	public static boolean isRoute() {
+		return true;
 	}
 	
 	protected void onPause() {
