@@ -2,6 +2,7 @@ package edu.ua.moundville;
 
 import java.util.ArrayList;
 
+import org.apache.commons.lang.WordUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -30,6 +31,7 @@ public class ListItems extends ListActivity implements DBResult {
 	protected final ArrayList<String> listLinks = new ArrayList<String>();
 	protected static DBHandler db = new DBHandler();
 	protected int DBCase = -1; 
+	protected String title;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -86,24 +88,26 @@ public class ListItems extends ListActivity implements DBResult {
 	    }
 	    switch(DBCase) {
 	    case 2:
-	    	setTitle("Style");
+	    	title="Style: " + WordUtils.capitalize(getIntent().getExtras().getString("style"));
 	    	break;
 	    case 3:
-	    	setTitle("Artifacts");
+	    	title="Artifacts";
 	    	break;
 	    case 4:
-	    	setTitle("Category");
+	    	title="Category: " + WordUtils.capitalize(getIntent().getExtras().getString("cat"));
 	    	break;
 	    case 5:
-	    	setTitle("Time Period");
+	    	title="Time Period: " + WordUtils.capitalize(getIntent().getExtras().getString("timepd"));
 	    	break;
 	    case 8:
-	    	setTitle("All Sites");
+	    	title="All Sites";
 	    	break;
 	    default:
-	    	setTitle("List");
+	    	title="List";
 	    	break;
 	    }
+	    
+	    setTitle(title);
 	}
 	
 	private void setupQuery() {
@@ -139,7 +143,7 @@ public class ListItems extends ListActivity implements DBResult {
 	public void receiveResult(JSONArray jArray) {
 		
 		if (jArray == null) {
-			listItems.add("I failed :(");
+			listItems.add("Error retrieving data...");
 		} else {
 			Log.d(TAG, jArray.toString());
 
@@ -149,17 +153,8 @@ public class ListItems extends ListActivity implements DBResult {
 					obj = (JSONObject) jArray.get(i);
 					switch (DBCase) {
 					case 2:
-						listItems.add(obj.getString("ak_Art_Title"));
-						listLinks.add(obj.getString("pk_Art_ArtID"));
-						break;
 					case 3: 
-						listItems.add(obj.getString("ak_Art_Title"));
-						listLinks.add(obj.getString("pk_Art_ArtID"));
-						break;
 					case 4: 
-						listItems.add(obj.getString("ak_Art_Title"));
-						listLinks.add(obj.getString("pk_Art_ArtID"));
-						break;
 					case 5:
 						listItems.add(obj.getString("ak_Art_Title"));
 						listLinks.add(obj.getString("pk_Art_ArtID"));
@@ -168,8 +163,7 @@ public class ListItems extends ListActivity implements DBResult {
 						listItems.add(obj.getString("ak_Site_SiteName"));
 						listLinks.add(obj.getString("pk_Site_SiteID"));
 						break;
-						// No case matched
-						/* TODO return error code or display error toast before returning */
+					/* No case matched. Should not happen. */
 					default: 
 						Log.e(TAG, "Failed to parse return json");
 						finish();
