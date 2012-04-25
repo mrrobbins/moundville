@@ -25,13 +25,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.text.Html;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.maps.OverlayItem;
 import com.readystatesoftware.mapviewballoons.BalloonOverlayView;
@@ -58,7 +56,9 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		// setup our fields
 		title = (TextView) v.findViewById(R.id.balloon_item_title);
 		snippet = (TextView) v.findViewById(R.id.balloon_item_snippet);
+		snippet.setVisibility(GONE);
 		image = (ImageView) v.findViewById(R.id.balloon_item_image);
+		image.setVisibility(GONE);
 		identifier = (TextView) v.findViewById(R.id.balloon_item_identifier);
 	}
 
@@ -67,27 +67,29 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 		
 		// map our custom item data to fields
 		title.setText(item.getTitle());
-		snippet.setText(Html.fromHtml(item.getSnippet()));
-		if( item.getSnippet().matches("^(null)?$")){
-			snippet.setVisibility(GONE);
-		}
-		else{
+		// check if item has a description
+		if(!item.getSnippet().matches("^(null)?$")){
+			snippet.setText(Html.fromHtml(item.getSnippet()));
 			snippet.setVisibility(VISIBLE);
 		}
 		// get remote image from network.
+		String imageURL = item.getImageURL();
 		// bitmap results would normally be cached, but this is good enough for demo purpose.
-		new FetchImageTask() { 
-	        protected void onPostExecute(Bitmap result) {
-	            if (result != null) {
-	            	image.setVisibility(VISIBLE);
-	            	image.setImageBitmap(result);
-	            }
-	            else{
-	            	image.setVisibility(GONE);
-	            }
-	        }
-	    }.execute(item.getImageURL());
-		
+		// check if imageURL valid
+		if (imageURL != null && !imageURL.matches("^(null)?$")) {
+			new FetchImageTask() { 
+				protected void onPostExecute(Bitmap result) {
+					// check if item has picture
+					if (result != null) {
+						image.setVisibility(VISIBLE);
+						image.setImageBitmap(result);
+					}
+					else{
+						image.setVisibility(GONE);
+					}
+				}
+			}.execute(item.getImageURL());
+		}
 	}
 
 	private class FetchImageTask extends AsyncTask<String, Integer, Bitmap> {
