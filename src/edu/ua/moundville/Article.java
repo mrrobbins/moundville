@@ -88,6 +88,8 @@ public abstract class Article extends Activity implements DBResult {
 	    protected Bitmap doInBackground(String... arg0) {
 	    	Bitmap b = null;
 	    	try {
+	    		
+	    		 //Bitmap too big to pass through intent, must write to file and pass the path
 				 File temp = File.createTempFile("image", "", getFilesDir());
 				 imageFile = temp.getAbsolutePath();
 				 

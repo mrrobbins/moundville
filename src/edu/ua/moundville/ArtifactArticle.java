@@ -71,11 +71,11 @@ public class ArtifactArticle extends Article implements DBResult {
 		addFieldToLayout(layout, "Time Period");
 		addButton(layout, timePeriod[1], 5, "timepd");
 		if(categories.size() != 0){
-		addFieldToLayout(layout, "Categories");
+			addFieldToLayout(layout, "Categories");
 		}
 		addOptionalFields(layout, categories, 4, "cat");
 		if(tags.size() !=0){
-		addFieldToLayout(layout, "Styles");
+			addFieldToLayout(layout, "Styles");
 		}
 		addOptionalFields(layout, tags, 2, "style");
 	}

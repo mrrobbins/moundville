@@ -3,7 +3,6 @@ package edu.ua.moundville;
 import java.util.List;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -22,7 +20,6 @@ import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
 
 public abstract class PlaceMap extends MapActivity {
 
@@ -88,7 +85,7 @@ public abstract class PlaceMap extends MapActivity {
         							}
         						};
 
-        					} else if (isLocationInRange(userPoint, MOUNDVILLE_LOCATION_CENTER, 500)) {
+        					} else if (isLocationInRange(userPoint, MOUNDVILLE_LOCATION_CENTER, 10000)) {
         						mapController.setZoom(17);
         					} else {
         						action = new Runnable() {
@@ -112,6 +109,13 @@ public abstract class PlaceMap extends MapActivity {
         	public void onClick(View v) {
         		if (toggleSatellite.isChecked()) {
         			mapView.setSatellite(true);
+        			Runnable action = new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(findViewById(R.id.mapview).getContext(), "Map may load slower in Satellite view", Toast.LENGTH_LONG).show();
+						}
+					};
+					runOnUiThread(action);
         		} else {
         			mapView.setSatellite(false);
         		}
@@ -126,14 +130,18 @@ public abstract class PlaceMap extends MapActivity {
     
     public static boolean isLocationInRange(GeoPoint point1, GeoPoint point2, float distance) {
     	Location location1 = new Location("MyLocationOverlay");
-    	location1.setLatitude(point1.getLatitudeE6() / 1E6);
-    	location1.setLongitude(point1.getLongitudeE6() / 1E6);
+    	location1.setLatitude(point1.getLatitudeE6() / 1E6d);
+    	location1.setLongitude(point1.getLongitudeE6() / 1E6d);
     	
     	Location location2 = new Location("MyLocationOverlay");
-    	location2.setLatitude(point2.getLatitudeE6() / 1E6);
-    	location2.setLongitude(point2.getLongitudeE6() / 1E6);
-    	
+    	location2.setLatitude(point2.getLatitudeE6() / 1E6d);
+    	location2.setLongitude(point2.getLongitudeE6() / 1E6d);
+        
     	float meterDistance = location1.distanceTo(location2);
+    	
+    	Log.d(TAG, "meterDistance: " + String.valueOf(meterDistance));
+    	Log.d(TAG, "loc1: " + String.valueOf(location1.getLatitude()) + ", " + String.valueOf(location1.getLongitude()));
+    	Log.d(TAG, "loc1: " + String.valueOf(location2.getLatitude()) + ", " + String.valueOf(location2.getLongitude()));
     	
     	return meterDistance <= distance ? true : false;
     }
