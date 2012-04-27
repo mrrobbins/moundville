@@ -27,10 +27,6 @@ public abstract class PlaceMap extends MapActivity {
 	protected final static String TAG = "PlaceMap";
     protected final MapActivity mapActivity = this;
     protected final static GeoPoint MOUNDVILLE_LOCATION_CENTER = new GeoPoint(33005263, -87631438);
-    protected final static GeoPoint THE_BLUFF = new GeoPoint(3322029,-87527894);
-    protected final static GeoPoint HOUSER_HALL = new GeoPoint(33214743,-87544427);
-    protected final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
-    protected final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
     protected static boolean satelliteState;
     protected static boolean locationState;
     protected static boolean firstTimeIn;
@@ -79,6 +75,7 @@ public abstract class PlaceMap extends MapActivity {
         			locationOverlay.enableMyLocation();
         			if (firstTimeIn == true || !systemResuming) {
         				Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_SHORT).show();
+        				Toast.makeText(v.getContext(), "You may need to zoom out to see your location displayed.", Toast.LENGTH_LONG).show();
         			}
         			locationOverlay.runOnFirstFix(new Runnable(){
         				public void run() {
@@ -200,13 +197,11 @@ public abstract class PlaceMap extends MapActivity {
 	protected void onPause() {
 		super.onPause();
 		if (toggleSatellite.isChecked() == true) {
-			toggleSatellite.performClick();
 			satelliteState = true;
 		} else {
 			satelliteState = false;
 		}
 		if (toggleLocation.isChecked() == true) {
-			toggleLocation.performClick();
 			locationState = true;
 		} else {
 			locationState = false;
@@ -215,10 +210,10 @@ public abstract class PlaceMap extends MapActivity {
 	protected void onResume() {
 		super.onResume();
 		systemResuming = true;
-		if (satelliteState == true) {
+		if (satelliteState == true && !toggleSatellite.isChecked()) {
 			toggleSatellite.performClick();
 		}
-		if (locationState == true) {
+		if (locationState == true && !toggleLocation.isChecked()) {
 			toggleLocation.performClick();
 		}
 		systemResuming = false;
