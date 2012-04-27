@@ -31,9 +31,15 @@ public abstract class PlaceMap extends MapActivity {
     protected final static GeoPoint HOUSER_HALL = new GeoPoint(33214743,-87544427);
     protected final static GeoPoint MOUNDVILLE_MOUND_A = new GeoPoint(33006034,-87631124);
     protected final static GeoPoint MOUNDVILLE_MUSEUM = new GeoPoint(33006176,-87634921);
+    protected static boolean satelliteState;
+    protected static boolean locationState;
+    protected static boolean firstTimeIn;
+    protected static boolean systemResuming;
     
 	protected MapView mapView;
 	protected MapController mapController;
+    protected ToggleButton toggleLocation;
+    protected ToggleButton toggleSatellite;
 	
     protected MyLocationOverlay locationOverlay;
     protected List<Overlay> mapOverlays;
@@ -44,7 +50,8 @@ public abstract class PlaceMap extends MapActivity {
         super.onCreate(savedInstanceState);
         
 	    setContentView(R.layout.place_map);
-        
+        toggleLocation = (ToggleButton)this.findViewById(R.id.toggle_location);
+        toggleSatellite = (ToggleButton)this.findViewById(R.id.toggle_satellite);
         /*	Capture the LinearLayout and MapView through their layout resources. */
         mapView = (MapView) findViewById(R.id.mapview);
         /* 	Then get the ZoomControls from the MapView */
@@ -55,23 +62,24 @@ public abstract class PlaceMap extends MapActivity {
         
         /* get the controller to set custom pan and zoom */
         mapController = mapView.getController();
-        //mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
         mapController.animateTo(MOUNDVILLE_LOCATION_CENTER);
         mapController.setZoom(17);
         
-        final ToggleButton toggleLocation = (ToggleButton)this.findViewById(R.id.toggle_location);
-        final ToggleButton toggleSatellite = (ToggleButton)this.findViewById(R.id.toggle_satellite);
         
         /* adding overlays */
         mapOverlays = mapView.getOverlays();
         locationOverlay = new MyLocationOverlay(this, mapView); 
         mapOverlays.add(locationOverlay);
         
+        firstTimeIn = false;
+        systemResuming = false;
         toggleLocation.setOnClickListener(new OnClickListener() {
         	public void onClick(View v) {
         		if (toggleLocation.isChecked()) {
         			locationOverlay.enableMyLocation();
-        			Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_SHORT).show();
+        			if (firstTimeIn == true || !systemResuming) {
+        				Toast.makeText(v.getContext(), "Finding your location...", Toast.LENGTH_SHORT).show();
+        			}
         			locationOverlay.runOnFirstFix(new Runnable(){
         				public void run() {
         					Runnable action = null;
@@ -85,17 +93,19 @@ public abstract class PlaceMap extends MapActivity {
         							}
         						};
 
-        					} else if (isLocationInRange(userPoint, MOUNDVILLE_LOCATION_CENTER, 10000)) {
-        						mapController.setZoom(17);
-        					} else {
-        						action = new Runnable() {
-        							public void run() {
-        								Toast.makeText(findViewById(R.id.mapview).getContext(), "You're location cannot be displayed.\n   You are too far from Moundville.", Toast.LENGTH_LONG).show();
-        								toggleLocation.performClick();
-        							}
-        						};
+//        					} else if (!isLocationInRange(userPoint, MOUNDVILLE_LOCATION_CENTER, 3000)) {
+//        						action = new Runnable() {
+//        							public void run() {
+//        								Toast.makeText(findViewById(R.id.mapview).getContext(), "You're location cannot be displayed.\n   You are too far from Moundville.", Toast.LENGTH_LONG).show();
+//        								toggleLocation.performClick();
+//        							}
+//        						};
+//        					} else {
+//        						mapController.animateTo(userPoint);
         					}
-        					if (action != null) runOnUiThread(action);
+        					if (action != null) {
+        						runOnUiThread(action);
+        					}
         				}
         			});
         		} else {
@@ -115,11 +125,14 @@ public abstract class PlaceMap extends MapActivity {
 							Toast.makeText(findViewById(R.id.mapview).getContext(), "Map may load slower in Satellite view", Toast.LENGTH_LONG).show();
 						}
 					};
-					runOnUiThread(action);
+					if (firstTimeIn == true || !systemResuming) {
+						runOnUiThread(action);
+					}
         		} else {
         			mapView.setSatellite(false);
         		}
         	} });
+        firstTimeIn = false;
     }
     
     abstract protected void populateMap();
@@ -138,6 +151,14 @@ public abstract class PlaceMap extends MapActivity {
     	location2.setLongitude(point2.getLongitudeE6() / 1E6d);
         
     	float meterDistance = location1.distanceTo(location2);
+    	float[] result = new float[1];
+    	Location.distanceBetween(
+    			location1.getLatitude(),
+    			location1.getLongitude(),
+    			location2.getLatitude(),
+    			location2.getLongitude(), 
+    			result);
+    	meterDistance = result[0];
     	
     	Log.d(TAG, "meterDistance: " + String.valueOf(meterDistance));
     	Log.d(TAG, "loc1: " + String.valueOf(location1.getLatitude()) + ", " + String.valueOf(location1.getLongitude()));
@@ -178,5 +199,28 @@ public abstract class PlaceMap extends MapActivity {
 	
 	protected void onPause() {
 		super.onPause();
+		if (toggleSatellite.isChecked() == true) {
+			toggleSatellite.performClick();
+			satelliteState = true;
+		} else {
+			satelliteState = false;
+		}
+		if (toggleLocation.isChecked() == true) {
+			toggleLocation.performClick();
+			locationState = true;
+		} else {
+			locationState = false;
+		}
+	}
+	protected void onResume() {
+		super.onResume();
+		systemResuming = true;
+		if (satelliteState == true) {
+			toggleSatellite.performClick();
+		}
+		if (locationState == true) {
+			toggleLocation.performClick();
+		}
+		systemResuming = false;
 	}
 }
