@@ -26,7 +26,7 @@ import edu.ua.moundville.DBHandler.DBResult;
 public class ProximityList extends ListActivity implements DBResult, LocationListener {
 	
 	private static final String DBCASE = "1";
-	private static final long MIN_UPDATE_TIME = 5000;
+	private static final long MIN_UPDATE_TIME = 15000;
 	private static final float MIN_UPDATE_DISTANCE = 10;
 	private static Location location = null;
 	protected ArrayList<NameValuePair> queryArgs = new ArrayList<NameValuePair>();
@@ -81,6 +81,7 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 	public void onLocationChanged(Location newLocation) {
 		location = newLocation;
 		setupQuery();
+	    db.sendQuery(this, queryArgs);
 	}
 
 	public void onProviderDisabled(String provider) {
@@ -102,6 +103,8 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 		if (jArray == null) {
 			Toast.makeText(this, "Error retrieving data...", Toast.LENGTH_LONG).show();
 			finish();
+		} else if (jArray.toString().contains("No Result")) {
+			Toast.makeText(this, "Sorry, there are no artifacts near by.", Toast.LENGTH_LONG).show();
 		} else {
 			Log.d(TAG, jArray.toString());
 
@@ -113,13 +116,11 @@ public class ProximityList extends ListActivity implements DBResult, LocationLis
 					listLinks.add(obj.getString("pk_Art_ArtID"));
 					listImages.add(obj.getString("Img_ImageThumb"));
 				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					finish();
 				}
 			}
+			prepareList();
 		}
-
-		prepareList();
 	}
 	
 	private void prepareList() {
