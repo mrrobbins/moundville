@@ -64,7 +64,10 @@ public class CustomBalloonOverlayView<Item extends OverlayItem> extends BalloonO
 
 	@Override
 	protected void setBalloonData(CustomOverlayItem item, ViewGroup parent) {
-		
+		title.setText("");
+		snippet.setText("");
+		snippet.setVisibility(GONE);
+		image.setVisibility(GONE);
 		// map our custom item data to fields
 		title.setText(item.getTitle());
 		// check if item has a description
